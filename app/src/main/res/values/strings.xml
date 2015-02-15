@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Balances for Whitgift School</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_setup">Setup Wizard</string>
+
+    <string name="introduction_title">Welcome</string>
+    <string name="introduction_text1">Balances for Whitgift School is an app which allows you to check your lunch and tuck balances and notifies you when they are low.</string>
+    <string name="introduction_text2">This app is developed by a student of Whitgift School. This app is not affiliated with Whitgift School or WisePay.</string>
+    <string name="introduction_text3">To proceed, you will need your WisePay username and password in hand. If you are a student, ask a parent/guardian or the School Office for the login details.</string>
+
+    <string name="login_title">Sign In to WisePay</string>
+    <string name="login_text1">Enter your WisePay username and password below. They will be stored locally on your phone and will not be stored on the server.</string>
+    <string name="login_text2">Username/Email</string>
+    <string name="login_text3">Password</string>
+    <string name="login_text4">SIGN IN</string>
+
+</resources>
