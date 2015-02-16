@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/introduction_title"
-        android:id="@+id/textView"
+        android:id="@+id/txtIntroductionTitle"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -23,9 +23,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/introduction_text1"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
+        android:text="@string/introduction_overview"
+        android:id="@+id/txtIntroductionOverview"
+        android:layout_below="@+id/txtIntroductionTitle"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -33,9 +33,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/introduction_text2"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/textView2"
+        android:text="@string/introduction_disclaimer"
+        android:id="@+id/txtIntroductionDisclaimer"
+        android:layout_below="@+id/txtIntroductionOverview"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:paddingTop="10dp" />
@@ -44,10 +44,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/introduction_text3"
-        android:id="@+id/textView4"
+        android:text="@string/introduction_instructions"
+        android:id="@+id/txtIntroductionInstructions"
         android:paddingTop="10dp"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/txtIntroductionDisclaimer"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 </RelativeLayout>
