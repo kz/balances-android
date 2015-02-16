@@ -1,18 +1,23 @@
 package in.iamkelv.balances.wizards.setupwizard;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.dd.processbutton.iml.ActionProcessButton;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
+import org.apache.http.Header;
+import org.apache.http.message.BasicHeader;
 import org.codepond.wizardroid.WizardStep;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import in.iamkelv.balances.R;
 
@@ -46,22 +51,65 @@ public class SetupWizardStepLogin extends WizardStep {
                 btnSignIn.setProgress(1);
 
                 // Assign variables
-                try {
-                    mUsername = URLEncoder.encode(txtUsername.getText().toString(), "UTF-8");
-                    mPassword = URLEncoder.encode(txtPassword.getText().toString(), "UTF-8");
-                } catch (UnsupportedEncodingException e) {
-                    Toast.makeText(getActivity(), "An unexpected error has occurred.", Toast.LENGTH_SHORT).show();
-                }
+                mUsername = txtUsername.getText().toString();
+                mPassword = txtPassword.getText().toString();
 
-
+                // Create parameters
+                RequestParams params = new RequestParams();
+                params.put("username", mUsername);
+                params.put("password", mPassword);
+                // Create headers
+                Header[] header = {
+                        new BasicHeader("Content-Type", "application/x-www-form-urlencoded")
+                };
+                // Create client
+                AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
+                client.post(null, mBaseUrl + "auth", header, params, "application/x-www-form-urlencoded", new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                            // Change view properties
+                            btnSignIn.setProgress(0);
+                            btnSignIn.setEnabled(true);
+                            new AlertDialog.Builder(getActivity())
+                                    .setMessage(response.toString())
+                                    .setCancelable(false)
+                                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int id) {
+                                        }
+                                    }).create().show();
+                    }
+//
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject errorResponse) {
+                        // Change view properties
+                        btnSignIn.setProgress(0);
+                        btnSignIn.setEnabled(true);
+                        try {
+                            new AlertDialog.Builder(getActivity())
+                                    .setMessage("Error - " + errorResponse.getString("message"))
+                                    .setCancelable(false)
+                                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int id) {
+                                        }
+                                    }).create().show();
+                        } catch (JSONException e1) {
+                            new AlertDialog.Builder(getActivity())
+                                    .setMessage("Error - " + "An unknown error has occurred.")
+                                    .setCancelable(false)
+                                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int id) {
+                                        }
+                                    }).create().show();
+                        }
+                    }
+                });
             }
         });
 
         return v;
-    }
-
-    public void authUser() {
-
     }
 
 }
