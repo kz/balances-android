@@ -1,4 +1,4 @@
-package in.iamkelv.balances;
+package in.iamkelv.balances.wizards.setupwizard;
 
 import org.codepond.wizardroid.WizardFlow;
 import org.codepond.wizardroid.layouts.BasicWizardLayout;

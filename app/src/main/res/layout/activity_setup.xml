@@ -7,5 +7,5 @@
         android:id="@+id/setup_wizard_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="in.iamkelv.balances.SetupWizard" />
+        android:name="in.iamkelv.balances.wizards.setupwizard.SetupWizard" />
 </FrameLayout>

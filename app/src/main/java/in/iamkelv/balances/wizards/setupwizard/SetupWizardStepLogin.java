@@ -1,4 +1,4 @@
-package in.iamkelv.balances;
+package in.iamkelv.balances.wizards.setupwizard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import com.dd.processbutton.iml.ActionProcessButton;
 
 import org.codepond.wizardroid.WizardStep;
+
+import in.iamkelv.balances.R;
 
 public class SetupWizardStepLogin extends WizardStep {
 
