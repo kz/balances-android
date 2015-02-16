@@ -67,17 +67,8 @@ public class SetupWizardStepLogin extends WizardStep {
                 client.post(null, mBaseUrl + "auth", header, params, "application/x-www-form-urlencoded", new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                            // Change view properties
-                            btnSignIn.setProgress(0);
-                            btnSignIn.setEnabled(true);
-                            new AlertDialog.Builder(getActivity())
-                                    .setMessage(response.toString())
-                                    .setCancelable(false)
-                                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int id) {
-                                        }
-                                    }).create().show();
+                        // Change view properties
+                        btnSignIn.setProgress(100);
                     }
 //
                     @Override
