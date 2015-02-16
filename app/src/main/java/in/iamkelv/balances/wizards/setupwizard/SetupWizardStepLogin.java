@@ -26,6 +26,7 @@ public class SetupWizardStepLogin extends WizardStep {
     // Member variables
     private String mUsername = "";
     private String mPassword = "";
+
     private String mBaseUrl = "https://balances.iamkelv.in/";
 
     // Methods
@@ -46,6 +47,8 @@ public class SetupWizardStepLogin extends WizardStep {
             @Override
             public void onClick(View v) {
                 // Change view properties
+                txtUsername.setFocusable(false);
+                txtPassword.setFocusable(false);
                 btnSignIn.setEnabled(false);
                 btnSignIn.setMode(ActionProcessButton.Mode.ENDLESS);
                 btnSignIn.setProgress(1);
@@ -69,6 +72,7 @@ public class SetupWizardStepLogin extends WizardStep {
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         // Change view properties
                         btnSignIn.setProgress(100);
+                        notifyCompleted();
                     }
 //
                     @Override
@@ -76,6 +80,12 @@ public class SetupWizardStepLogin extends WizardStep {
                         // Change view properties
                         btnSignIn.setProgress(0);
                         btnSignIn.setEnabled(true);
+                        txtUsername.setFocusableInTouchMode(true);
+                        txtUsername.setFocusable(true);
+                        txtPassword.setFocusableInTouchMode(true);
+                        txtPassword.setFocusable(true);
+
+                        // Display alert dialog
                         try {
                             new AlertDialog.Builder(getActivity())
                                     .setMessage("Error - " + errorResponse.getString("message"))
@@ -102,5 +112,4 @@ public class SetupWizardStepLogin extends WizardStep {
 
         return v;
     }
-
 }
