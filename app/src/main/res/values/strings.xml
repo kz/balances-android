@@ -19,4 +19,8 @@
     <string name="login_signed_in">SIGNED IN</string>
     <string name="login_signing_in">SIGNING IN…</string>
 
+    <string name="notifications_title">Set Up Notifications</string>
+    <string name="notifications_instructions">This app can notify you on a daily basis when your balances are low. Notifications are optional, so you are free to skip this step.</string>
+    <string name="notifications_enable_notifications">Enable Notifications</string>
+
 </resources>
