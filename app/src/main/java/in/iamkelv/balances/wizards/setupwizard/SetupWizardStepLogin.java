@@ -107,6 +107,7 @@ public class SetupWizardStepLogin extends WizardStep {
 
                             JsonObject jsonResponse = (JsonObject) retrofitError.getBodyAs(JsonObject.class);
 
+                            try {
                                 new AlertDialog.Builder(getActivity())
                                         .setMessage("Error - " + jsonResponse.get("message").getAsString())
                                         .setCancelable(false)
@@ -115,6 +116,16 @@ public class SetupWizardStepLogin extends WizardStep {
                                             public void onClick(DialogInterface dialog, int id) {
                                             }
                                         }).create().show();
+                            } catch (NullPointerException e) {
+                                new AlertDialog.Builder(getActivity())
+                                        .setMessage("Error - An unknown error has occurred.")
+                                        .setCancelable(false)
+                                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int id) {
+                                            }
+                                        }).create().show();
+                            }
                             notifyCompleted();
                         }
                     };
