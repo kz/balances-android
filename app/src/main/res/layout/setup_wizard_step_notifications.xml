@@ -110,7 +110,8 @@
         android:layout_alignLeft="@+id/textView12"
         android:layout_alignStart="@+id/textView12"
         android:layout_alignRight="@+id/textView11"
-        android:layout_alignEnd="@+id/textView11" />
+        android:layout_alignEnd="@+id/textView11"
+        android:max="20" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -141,7 +142,8 @@
         android:layout_alignLeft="@+id/textView13"
         android:layout_alignStart="@+id/textView13"
         android:layout_alignRight="@+id/txtNotificationsIntroduction"
-        android:layout_alignEnd="@+id/txtNotificationsIntroduction" />
+        android:layout_alignEnd="@+id/txtNotificationsIntroduction"
+        android:max="20" />
 
     <TextView
         android:layout_width="wrap_content"
