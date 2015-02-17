@@ -1,5 +1,6 @@
 package in.iamkelv.balances;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +14,15 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Check if initial setup is required
+        PreferencesModel preferences = new PreferencesModel(this);
+        Boolean setupState = preferences.getSetupState();
+        if (!setupState) {
+            Intent setupIntent = new Intent(MainActivity.this, SetupActivity.class);
+            MainActivity.this.startActivity(setupIntent);
+            finish();
+        }
     }
 
 
