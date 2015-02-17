@@ -14,6 +14,36 @@ public class PreferencesModel {
         this.mEditor = mSettings.edit();
     }
 
+    public boolean getSetupState() {
+        Boolean setupState = mSettings.getBoolean("setup_state", false);
+        return setupState;
+    }
+
+    public boolean getAuthState() {
+        Boolean authState = mSettings.getBoolean("auth_state", true);
+        return authState;
+    }
+
+    public String getUsername() {
+        String username = mSettings.getString("username", "");
+        return username;
+    }
+
+    public String getPassword() {
+        String password = mSettings.getString("password", "");
+        return password;
+    }
+
+    public void setSetupState(Boolean setupState) {
+        mEditor.putBoolean("setup_state", setupState);
+        mEditor.commit();
+    }
+
+    public void setAuthState(Boolean authState) {
+        mEditor.putBoolean("auth_state", authState);
+        mEditor.commit();
+    }
+
     public void setUsername(String username) {
         mEditor.putString("username", username);
         mEditor.commit();
