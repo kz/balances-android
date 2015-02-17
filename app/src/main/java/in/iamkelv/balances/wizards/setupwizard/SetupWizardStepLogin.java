@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -30,8 +31,8 @@ public class SetupWizardStepLogin extends WizardStep {
     // Member variables
     private String mUsername = "";
     private String mPassword = "";
-
     private String mBaseUrl = "https://balances.iamkelv.in/";
+    private static final String PREFS_NAME = "BalancesPrefs";
 
     // Methods
 
@@ -70,7 +71,7 @@ public class SetupWizardStepLogin extends WizardStep {
                     btnSignIn.setMode(ActionProcessButton.Mode.ENDLESS);
                     btnSignIn.setProgress(1);
 
-                    // Assign variables
+                    // Assign variables - TODO: Add check for empty username/password
                     mUsername = txtLoginUsername.getText().toString();
                     mPassword = txtLoginPassword.getText().toString();
 
@@ -87,6 +88,13 @@ public class SetupWizardStepLogin extends WizardStep {
                     client.post(null, mBaseUrl + "auth", header, params, "application/x-www-form-urlencoded", new JsonHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                            // Save credentials to preferences
+                            SharedPreferences settings = getActivity().getSharedPreferences(PREFS_NAME, 0);
+                            SharedPreferences.Editor editor = settings.edit();
+                            editor.putString("username", mUsername);
+                            editor.putString("password", mPassword);
+                            editor.commit();
+
                             // Change view properties
                             btnSignIn.setProgress(100);
                             notifyCompleted();
