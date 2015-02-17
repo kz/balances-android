@@ -21,5 +21,15 @@
     <string name="title_activity_main">Balances for Whitgift School</string>
     <string name="hello_world">Hello world!</string>
     <string name="notifications_every_day_at">Every day at:</string>
+    <string name="notifications_scheduled_time">Scheduled Time</string>
+    <string name="notifications_scheduled_time_instructions">Your balances will be checked daily at your chosen time.</string>
+    <string name="notifications_choose_time">Choose Time</string>
+    <string name="notifications_thresholds">Thresholds</string>
+    <string name="notifications_thresholds_instructions">Although your balances are checked daily, you will only be notified if your balances fall below your chosen thresholds.</string>
+    <string name="notifications_lunch">Lunch</string>
+    <string name="notifications_pound_sign">\u00A3</string>
+    <string name="notifications_tuck">Tuck</string>
+    <string name="notifications_scheduled_at">Scheduled at:</string>
+    <string name="notifications_scheduled_time_default">18:00</string>
 
 </resources>

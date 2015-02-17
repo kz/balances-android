@@ -36,133 +36,153 @@
         android:id="@+id/chkNotificationsEnable"
         android:layout_below="@+id/txtNotificationsIntroduction"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:checked="false" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Your balances will be checked daily at your chosen time.  "
-        android:id="@+id/textView"
-        android:layout_below="@+id/textView8"
-        android:layout_alignLeft="@+id/textView8"
-        android:layout_alignStart="@+id/textView8" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Choose Time"
-        android:id="@+id/button"
-        android:layout_below="@+id/textView"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Scheduled Time"
-        android:id="@+id/textView8"
+    <RelativeLayout
+        android:id="@+id/notificationsLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_below="@+id/chkNotificationsEnable"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="32dp"
-        android:textColor="@android:color/black" />
+        android:layout_alignParentStart="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textView9"
-        android:layout_below="@+id/button"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/notifications_scheduled_time"
+            android:id="@+id/txtScheduledTimeTitle"
+            android:textColor="@android:color/black"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Thresholds"
-        android:id="@+id/textView10"
-        android:layout_below="@+id/button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="32dp"
-        android:textColor="@android:color/black" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/notifications_scheduled_time_instructions"
+            android:id="@+id/txtScheduledTimeInstructions"
+            android:layout_below="@+id/txtScheduledTimeTitle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Although your balances are checked daily, you will only be notified if your balances fall below your chosen thresholds."
-        android:id="@+id/textView11"
-        android:layout_below="@+id/textView9"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="32dp" />
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notifications_choose_time"
+            android:id="@+id/btnChooseTime"
+            android:layout_below="@+id/txtScheduledAt"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-    <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
-        android:layout_below="@+id/textView12"
-        android:layout_alignLeft="@+id/textView12"
-        android:layout_alignStart="@+id/textView12"
-        android:layout_alignRight="@+id/textView11"
-        android:layout_alignEnd="@+id/textView11"
-        android:max="20" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/notifications_thresholds"
+            android:id="@+id/txtThresholds"
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/btnChooseTime"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Lunch"
-        android:id="@+id/textView12"
-        android:layout_below="@+id/textView11"
-        android:layout_alignLeft="@+id/textView11"
-        android:layout_alignStart="@+id/textView11"
-        android:layout_marginTop="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/notifications_thresholds_instructions"
+            android:id="@+id/txtThresholdsInstructions"
+            android:layout_below="@+id/txtThresholds"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Tuck"
-        android:id="@+id/textView13"
-        android:layout_below="@+id/seekBar"
-        android:layout_alignLeft="@+id/seekBar"
-        android:layout_alignStart="@+id/seekBar" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/notifications_lunch"
+            android:id="@+id/txtLunch"
+            android:layout_below="@+id/txtThresholdsInstructions"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-    <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/seekBar2"
-        android:layout_below="@+id/textView13"
-        android:layout_alignLeft="@+id/textView13"
-        android:layout_alignStart="@+id/textView13"
-        android:layout_alignRight="@+id/txtNotificationsIntroduction"
-        android:layout_alignEnd="@+id/txtNotificationsIntroduction"
-        android:max="20" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/notifications_pound_sign"
+            android:id="@+id/txtLunchPound"
+            android:layout_below="@+id/txtThresholdsInstructions"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="£"
-        android:id="@+id/textView14"
-        android:layout_alignTop="@+id/textView12"
-        android:layout_alignRight="@+id/txtNotificationsIntroduction"
-        android:layout_alignEnd="@+id/txtNotificationsIntroduction" />
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sbLunch"
+            android:max="20"
+            android:layout_below="@+id/txtLunch"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="£"
-        android:id="@+id/textView15"
-        android:layout_alignTop="@+id/textView13"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/notifications_tuck"
+            android:id="@+id/txtTuck"
+            android:layout_below="@+id/sbLunch"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/notifications_pound_sign"
+            android:id="@+id/txtTuckPound"
+            android:layout_alignTop="@+id/txtTuck"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sbTuck"
+            android:max="20"
+            android:layout_below="@+id/txtTuck"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/notifications_scheduled_at"
+            android:id="@+id/txtScheduledAt"
+            android:layout_below="@+id/txtScheduledTimeInstructions"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/notifications_scheduled_time_default"
+            android:id="@+id/txtScheduledTime"
+            android:layout_below="@+id/txtScheduledTimeInstructions"
+            android:layout_toRightOf="@+id/txtScheduledAt"
+            android:layout_toEndOf="@+id/txtScheduledAt"
+            android:layout_marginLeft="3dp" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
