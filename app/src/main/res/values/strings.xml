@@ -20,5 +20,6 @@
     <string name="notifications_enable_notifications">Enable Notifications</string>
     <string name="title_activity_main">Balances for Whitgift School</string>
     <string name="hello_world">Hello world!</string>
+    <string name="notifications_every_day_at">Every day at:</string>
 
 </resources>

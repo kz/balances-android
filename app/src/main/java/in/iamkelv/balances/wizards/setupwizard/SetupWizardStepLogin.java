@@ -3,8 +3,6 @@ package in.iamkelv.balances.wizards.setupwizard;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -14,25 +12,27 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.dd.processbutton.iml.ActionProcessButton;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
-import org.apache.http.Header;
-import org.apache.http.message.BasicHeader;
 import org.codepond.wizardroid.WizardStep;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import in.iamkelv.balances.PreferencesModel;
 import in.iamkelv.balances.R;
+import in.iamkelv.balances.WisePayService;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class SetupWizardStepLogin extends WizardStep {
 
     // Member variables
     private String mUsername = "";
     private String mPassword = "";
-    private String mBaseUrl = "https://balances.iamkelv.in/";
+    private final String ENDPOINT = "https://balances.iamkelv.in";
 
     // Methods
 
@@ -75,19 +75,16 @@ public class SetupWizardStepLogin extends WizardStep {
                     mUsername = txtLoginUsername.getText().toString();
                     mPassword = txtLoginPassword.getText().toString();
 
-                    // Create parameters
-                    RequestParams params = new RequestParams();
-                    params.put("username", mUsername);
-                    params.put("password", mPassword);
-                    // Create headers
-                    Header[] header = {
-                            new BasicHeader("Content-Type", "application/x-www-form-urlencoded")
-                    };
-                    // Create client
-                    AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
-                    client.post(null, mBaseUrl + "auth", header, params, "application/x-www-form-urlencoded", new JsonHttpResponseHandler() {
+                    // Send auth request
+                    RestAdapter restAdapter = new RestAdapter.Builder()
+                            .setLogLevel(RestAdapter.LogLevel.FULL)
+                            .setEndpoint(ENDPOINT)
+                            .build();
+                    WisePayService service = restAdapter.create(WisePayService.class);
+
+                    Callback callback = new Callback() {
                         @Override
-                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        public void success(Object o, Response response) {
                             // Save credentials to preferences
                             PreferencesModel preferences = new PreferencesModel(getActivity());
                             preferences.setUsername(mUsername);
@@ -99,7 +96,7 @@ public class SetupWizardStepLogin extends WizardStep {
                         }
 
                         @Override
-                        public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject errorResponse) {
+                        public void failure(RetrofitError retrofitError) {
                             // Change view properties
                             btnSignIn.setProgress(0);
                             btnSignIn.setEnabled(true);
@@ -108,29 +105,22 @@ public class SetupWizardStepLogin extends WizardStep {
                             txtLoginPassword.setFocusableInTouchMode(true);
                             txtLoginPassword.setFocusable(true);
 
-                            // Display alert dialog
-                            try {
-                                new AlertDialog.Builder(getActivity())
-                                        .setMessage("Error - " + errorResponse.getString("message"))
-                                        .setCancelable(false)
-                                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int id) {
-                                            }
-                                        }).create().show();
-                            } catch (JSONException e1) {
-                                new AlertDialog.Builder(getActivity())
-                                        .setMessage("Error - " + "An unknown error has occurred.")
-                                        .setCancelable(false)
-                                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int id) {
-                                            }
-                                        }).create().show();
-                            }
-                        }
+                            JsonObject jsonResponse = (JsonObject) retrofitError.getBodyAs(JsonObject.class);
 
-                    });
+                                new AlertDialog.Builder(getActivity())
+                                        .setMessage("Error - " + jsonResponse.get("message").getAsString())
+                                        .setCancelable(false)
+                                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int id) {
+                                            }
+                                        }).create().show();
+                            notifyCompleted();
+                        }
+                    };
+
+                    service.authUser(mUsername, mPassword, callback);
+
                 } else {
                     new AlertDialog.Builder(getActivity())
                             .setMessage("There is no internet connection. Please connect to the internet and try again.")
