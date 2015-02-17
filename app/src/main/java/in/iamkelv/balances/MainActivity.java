@@ -1,4 +1,4 @@
-package in.iamkelv.balances.wizards.setupwizard;
+package in.iamkelv.balances;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
