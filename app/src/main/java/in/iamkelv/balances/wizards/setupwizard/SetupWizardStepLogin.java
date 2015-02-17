@@ -24,6 +24,7 @@ import org.codepond.wizardroid.WizardStep;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import in.iamkelv.balances.PreferencesModel;
 import in.iamkelv.balances.R;
 
 public class SetupWizardStepLogin extends WizardStep {
@@ -32,7 +33,6 @@ public class SetupWizardStepLogin extends WizardStep {
     private String mUsername = "";
     private String mPassword = "";
     private String mBaseUrl = "https://balances.iamkelv.in/";
-    private static final String PREFS_NAME = "BalancesPrefs";
 
     // Methods
 
@@ -89,11 +89,9 @@ public class SetupWizardStepLogin extends WizardStep {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             // Save credentials to preferences
-                            SharedPreferences settings = getActivity().getSharedPreferences(PREFS_NAME, 0);
-                            SharedPreferences.Editor editor = settings.edit();
-                            editor.putString("username", mUsername);
-                            editor.putString("password", mPassword);
-                            editor.commit();
+                            PreferencesModel preferences = new PreferencesModel(getActivity());
+                            preferences.setUsername(mUsername);
+                            preferences.setPassword(mPassword);
 
                             // Change view properties
                             btnSignIn.setProgress(100);
