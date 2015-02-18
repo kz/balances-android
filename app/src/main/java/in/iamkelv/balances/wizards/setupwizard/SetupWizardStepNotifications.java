@@ -36,8 +36,8 @@ public class SetupWizardStepNotifications extends WizardStep {
         final TextView txtTuckPound = (TextView) v.findViewById(R.id.txtTuckPound);
 
         // Set default values of strings
-        txtLunchPound.setText(getString(R.string.notifications_pound_sign) + sbLunch.getProgress());
-        txtTuckPound.setText(getString(R.string.notifications_pound_sign) + sbTuck.getProgress());
+        txtLunchPound.setText(getString(R.string.pound_sign) + sbLunch.getProgress());
+        txtTuckPound.setText(getString(R.string.pound_sign) + sbTuck.getProgress());
 
         // Set default values in preferences
         PreferencesModel preferences = new PreferencesModel(getActivity());
@@ -68,7 +68,7 @@ public class SetupWizardStepNotifications extends WizardStep {
                 if (progress == 0) {
                     txtLunchPound.setText("Disabled");
                 } else {
-                    txtLunchPound.setText(getString(R.string.notifications_pound_sign) + progress);
+                    txtLunchPound.setText(getString(R.string.pound_sign) + progress);
                 }
             }
 
@@ -90,7 +90,7 @@ public class SetupWizardStepNotifications extends WizardStep {
                 if (progress == 0) {
                     txtTuckPound.setText("Disabled");
                 } else {
-                    txtTuckPound.setText(getString(R.string.notifications_pound_sign) + progress);
+                    txtTuckPound.setText(getString(R.string.pound_sign) + progress);
                 }
             }
 

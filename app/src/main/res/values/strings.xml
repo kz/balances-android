@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Balances for Whitgift School</string>
+    <string name="pound_sign">\u00A3</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_setup">Setup Wizard</string>
     <string name="introduction_title">Welcome</string>
@@ -25,7 +26,6 @@
     <string name="notifications_thresholds">Thresholds</string>
     <string name="notifications_thresholds_instructions">Although your balances are checked daily, you will only be notified if your balances fall below your chosen thresholds.</string>
     <string name="notifications_lunch">Lunch</string>
-    <string name="notifications_pound_sign">\u00A3</string>
     <string name="notifications_tuck">Tuck</string>
     <string name="notifications_scheduled_at">Scheduled at:</string>
     <string name="notifications_scheduled_time_hours_default">18</string>
@@ -33,5 +33,11 @@
     <string name="notifications_scheduled_time_minutes_default">00</string>
     <string name="finish_setup_complete">Setup Complete</string>
     <string name="finish_instructions">The app has now been set up. Tap \'Finish\' to close this setup wizard.</string>
+    <string name="main_title">Balances</string>
+    <string name="main_lunch">Lunch</string>
+    <string name="main_tuck">Tuck</string>
+    <string name="finish_note">Note: Balances are not updated in realtime and are instead sent in batch from the tills to WisePay on a daily basis (usually after school).</string>
+    <string name="main_settings">Settings</string>
+    <string name="main_last_checked">Last checked:</string>
 
 </resources>
