@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import org.codepond.wizardroid.WizardStep;
 
+import in.iamkelv.balances.PreferencesModel;
 import in.iamkelv.balances.R;
 
 public class SetupWizardStepFinish extends WizardStep {
@@ -18,6 +19,10 @@ public class SetupWizardStepFinish extends WizardStep {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.setup_wizard_step_finish, container, false);
+
+        PreferencesModel preferences = new PreferencesModel(getActivity());
+        preferences.setSetupState(true);
+
         return v;
     }
 }
