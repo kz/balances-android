@@ -10,9 +10,12 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import org.codepond.wizardroid.WizardStep;
 
+import in.iamkelv.balances.PreferencesModel;
 import in.iamkelv.balances.R;
 
 public class SetupWizardStepNotifications extends WizardStep {
@@ -27,15 +30,79 @@ public class SetupWizardStepNotifications extends WizardStep {
 
         final CheckBox chkNotificationsEnable = (CheckBox) v.findViewById(R.id.chkNotificationsEnable);
         final RelativeLayout notificationsLayout = (RelativeLayout) v.findViewById(R.id.notificationsLayout);
+        final SeekBar sbLunch = (SeekBar) v.findViewById(R.id.sbLunch);
+        final SeekBar sbTuck = (SeekBar) v.findViewById(R.id.sbTuck);
+        final TextView txtLunchPound = (TextView) v.findViewById(R.id.txtLunchPound);
+        final TextView txtTuckPound = (TextView) v.findViewById(R.id.txtTuckPound);
+
+        // Set default values of strings
+        txtLunchPound.setText(getString(R.string.notifications_pound_sign) + sbLunch.getProgress());
+        txtTuckPound.setText(getString(R.string.notifications_pound_sign) + sbTuck.getProgress());
+
+        // Set default values in preferences
+        PreferencesModel preferences = new PreferencesModel(getActivity());
+        preferences.setNotificationState(false);
+        preferences.setLunchThreshold(10);
+        preferences.setTuckThreshold(10);
+        preferences.setNotificationHours(18);
+        preferences.setNotificationHours(0);
 
         chkNotificationsEnable.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
                     fadeIn(notificationsLayout);
+                    PreferencesModel preferences = new PreferencesModel(getActivity());
+                    preferences.setNotificationState(true);
                 } else {
                     fadeOut(notificationsLayout);
+                    PreferencesModel preferences = new PreferencesModel(getActivity());
+                    preferences.setNotificationState(false);
                 }
+            }
+        });
+
+        sbLunch.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (progress == 0) {
+                    txtLunchPound.setText("Disabled");
+                } else {
+                    txtLunchPound.setText(getString(R.string.notifications_pound_sign) + progress);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                PreferencesModel preferences = new PreferencesModel(getActivity());
+                preferences.setLunchThreshold(seekBar.getProgress());
+            }
+        });
+
+        sbTuck.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (progress == 0) {
+                    txtTuckPound.setText("Disabled");
+                } else {
+                    txtTuckPound.setText(getString(R.string.notifications_pound_sign) + progress);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                PreferencesModel preferences = new PreferencesModel(getActivity());
+                preferences.setTuckThreshold(seekBar.getProgress());
             }
         });
 

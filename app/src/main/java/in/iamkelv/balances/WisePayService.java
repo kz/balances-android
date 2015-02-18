@@ -1,7 +1,5 @@
 package in.iamkelv.balances;
 
-import org.json.JSONObject;
-
 import retrofit.Callback;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;

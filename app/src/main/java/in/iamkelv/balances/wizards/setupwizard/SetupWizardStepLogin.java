@@ -12,12 +12,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.dd.processbutton.iml.ActionProcessButton;
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import org.codepond.wizardroid.WizardStep;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import in.iamkelv.balances.PreferencesModel;
 import in.iamkelv.balances.R;

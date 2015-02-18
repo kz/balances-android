@@ -15,23 +15,40 @@ public class PreferencesModel {
     }
 
     public boolean getSetupState() {
-        Boolean setupState = mSettings.getBoolean("setup_state", false);
-        return setupState;
+        return mSettings.getBoolean("setup_state", false);
     }
 
     public boolean getAuthState() {
-        Boolean authState = mSettings.getBoolean("auth_state", true);
-        return authState;
+        return mSettings.getBoolean("auth_state", true);
     }
 
     public String getUsername() {
-        String username = mSettings.getString("username", "");
-        return username;
+        return mSettings.getString("username", "");
     }
 
     public String getPassword() {
-        String password = mSettings.getString("password", "");
-        return password;
+        return mSettings.getString("password", "");
+    }
+
+    public boolean getNotificationState() {
+        return mSettings.getBoolean("notification_state", false);
+    }
+
+    public int getNotificationHours() {
+        return mSettings.getInt("notification_hours", 18);
+    }
+
+    public int getNotificationMinutes() {
+        return mSettings.getInt("notification_minutes", 0);
+    }
+
+    public int getLunchThreshold() {
+        return mSettings.getInt("lunch_threshold", 10);
+    }
+
+    public int getTuckThreshold() {
+        return mSettings.getInt("tuck_threshold", 10);
+
     }
 
     public void setSetupState(Boolean setupState) {
@@ -53,5 +70,31 @@ public class PreferencesModel {
         mEditor.putString("password", password);
         mEditor.commit();
     }
+
+    public void setNotificationState(Boolean notificationState) {
+        mEditor.putBoolean("notification_state", notificationState);
+        mEditor.commit();
+    }
+
+    public void setNotificationHours(int notificationHours) {
+        mEditor.putInt("notification_hours", notificationHours);
+        mEditor.commit();
+    }
+
+    public void setNotificationMinutes(int notificationMinutes) {
+        mEditor.putInt("notification_minutes", notificationMinutes);
+        mEditor.commit();
+    }
+
+    public void setLunchThreshold(int lunchThreshold) {
+        mEditor.putInt("lunch_threshold", lunchThreshold);
+        mEditor.commit();
+    }
+
+    public void setTuckThreshold(int tuckThreshold) {
+        mEditor.putInt("tuck_threshold", tuckThreshold);
+        mEditor.commit();
+    }
+
 
 }

@@ -19,8 +19,6 @@
     <string name="notifications_instructions">This app can notify you on a daily basis when your balances are low. Notifications are optional, so you are free to skip this step.</string>
     <string name="notifications_enable_notifications">Enable Notifications</string>
     <string name="title_activity_main">Balances for Whitgift School</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="notifications_every_day_at">Every day at:</string>
     <string name="notifications_scheduled_time">Scheduled Time</string>
     <string name="notifications_scheduled_time_instructions">Your balances will be checked daily at your chosen time.</string>
     <string name="notifications_choose_time">Choose Time</string>

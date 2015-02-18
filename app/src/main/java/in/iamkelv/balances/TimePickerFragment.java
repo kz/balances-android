@@ -8,10 +8,6 @@ import android.text.format.DateFormat;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener{
 
     SetupActivity mParent;
@@ -23,8 +19,8 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Get current values from mTxtScheduledTime
-        TextView mTxtScheduledTimeHours = (TextView) mParent.mTxtScheduledTimeHours;
-        TextView mTxtScheduledTimeMinutes = (TextView) mParent.mTxtScheduledTimeMinutes;
+        TextView mTxtScheduledTimeHours = mParent.mTxtScheduledTimeHours;
+        TextView mTxtScheduledTimeMinutes = mParent.mTxtScheduledTimeMinutes;
         int hour = Integer.parseInt(mTxtScheduledTimeHours.getText().toString());
         int minute = Integer.parseInt(mTxtScheduledTimeMinutes.getText().toString());
 
@@ -38,6 +34,9 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         String minutes = String.format("%02d", minute);
         mParent.mTxtScheduledTimeHours.setText(hours);
         mParent.mTxtScheduledTimeMinutes.setText(minutes);
+        PreferencesModel preferences = new PreferencesModel(getActivity());
+        preferences.setNotificationHours(hourOfDay);
+        preferences.setNotificationMinutes(minute);
     }
 
 }
