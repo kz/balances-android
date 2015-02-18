@@ -77,7 +77,8 @@
             android:id="@+id/btnChooseTime"
             android:layout_below="@+id/txtScheduledAt"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:onClick="showTimePickerDialog" />
 
         <TextView
             android:layout_width="wrap_content"
