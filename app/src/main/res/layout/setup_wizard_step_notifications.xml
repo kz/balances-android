@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -46,144 +45,145 @@
         android:layout_below="@+id/chkNotificationsEnable"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:visibility="invisible">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/notifications_scheduled_time"
-            android:id="@+id/txtScheduledTimeTitle"
-            android:textColor="@android:color/black"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/notifications_scheduled_time"
+                android:id="@+id/txtScheduledTimeTitle"
+                android:textColor="@android:color/black"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/notifications_scheduled_time_instructions"
-            android:id="@+id/txtScheduledTimeInstructions"
-            android:layout_below="@+id/txtScheduledTimeTitle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/notifications_scheduled_time_instructions"
+                android:id="@+id/txtScheduledTimeInstructions"
+                android:layout_below="@+id/txtScheduledTimeTitle"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/notifications_choose_time"
-            android:id="@+id/btnChooseTime"
-            android:layout_below="@+id/txtScheduledAt"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:onClick="showTimePickerDialog" />
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notifications_choose_time"
+                android:id="@+id/btnChooseTime"
+                android:layout_below="@+id/txtScheduledAt"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:onClick="showTimePickerDialog" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/notifications_thresholds"
-            android:id="@+id/txtThresholds"
-            android:textColor="@android:color/black"
-            android:layout_below="@+id/btnChooseTime"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/notifications_thresholds"
+                android:id="@+id/txtThresholds"
+                android:textColor="@android:color/black"
+                android:layout_below="@+id/btnChooseTime"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/notifications_thresholds_instructions"
-            android:id="@+id/txtThresholdsInstructions"
-            android:layout_below="@+id/txtThresholds"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/notifications_thresholds_instructions"
+                android:id="@+id/txtThresholdsInstructions"
+                android:layout_below="@+id/txtThresholds"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/notifications_lunch"
-            android:id="@+id/txtLunch"
-            android:layout_below="@+id/txtThresholdsInstructions"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/notifications_lunch"
+                android:id="@+id/txtLunch"
+                android:layout_below="@+id/txtThresholdsInstructions"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/notifications_pound_sign"
-            android:id="@+id/txtLunchPound"
-            android:layout_below="@+id/txtThresholdsInstructions"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/notifications_pound_sign"
+                android:id="@+id/txtLunchPound"
+                android:layout_below="@+id/txtThresholdsInstructions"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-        <SeekBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/sbLunch"
-            android:max="20"
-            android:layout_below="@+id/txtLunch"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            <SeekBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sbLunch"
+                android:max="20"
+                android:layout_below="@+id/txtLunch"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/notifications_tuck"
-            android:id="@+id/txtTuck"
-            android:layout_below="@+id/sbLunch"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/notifications_tuck"
+                android:id="@+id/txtTuck"
+                android:layout_below="@+id/sbLunch"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/notifications_pound_sign"
-            android:id="@+id/txtTuckPound"
-            android:layout_alignTop="@+id/txtTuck"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/notifications_pound_sign"
+                android:id="@+id/txtTuckPound"
+                android:layout_alignTop="@+id/txtTuck"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-        <SeekBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/sbTuck"
-            android:max="20"
-            android:layout_below="@+id/txtTuck"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            <SeekBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sbTuck"
+                android:max="20"
+                android:layout_below="@+id/txtTuck"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/notifications_scheduled_at"
-            android:id="@+id/txtScheduledAt"
-            android:layout_below="@+id/txtScheduledTimeInstructions"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/notifications_scheduled_at"
+                android:id="@+id/txtScheduledAt"
+                android:layout_below="@+id/txtScheduledTimeInstructions"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/notifications_scheduled_time_default"
-            android:id="@+id/txtScheduledTime"
-            android:layout_below="@+id/txtScheduledTimeInstructions"
-            android:layout_toRightOf="@+id/txtScheduledAt"
-            android:layout_toEndOf="@+id/txtScheduledAt"
-            android:layout_marginLeft="3dp" />
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/notifications_scheduled_time_default"
+                android:id="@+id/txtScheduledTime"
+                android:layout_below="@+id/txtScheduledTimeInstructions"
+                android:layout_toRightOf="@+id/txtScheduledAt"
+                android:layout_toEndOf="@+id/txtScheduledAt"
+                android:layout_marginLeft="3dp" />
     </RelativeLayout>
+
 
 </RelativeLayout>
