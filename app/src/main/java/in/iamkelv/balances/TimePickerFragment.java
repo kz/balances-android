@@ -23,15 +23,10 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Get current values from mTxtScheduledTime
-        SimpleDateFormat simpleDateFormat = new java.text.SimpleDateFormat("HH:mm");
-        Calendar calendar = Calendar.getInstance();
-        try {
-            calendar.setTime(simpleDateFormat.parse(mParent.mTxtScheduledTime.getText().toString()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        int hour = Calendar.HOUR_OF_DAY;
-        int minute = Calendar.HOUR_OF_DAY;
+        TextView mTxtScheduledTimeHours = (TextView) mParent.mTxtScheduledTimeHours;
+        TextView mTxtScheduledTimeMinutes = (TextView) mParent.mTxtScheduledTimeMinutes;
+        int hour = Integer.parseInt(mTxtScheduledTimeHours.getText().toString());
+        int minute = Integer.parseInt(mTxtScheduledTimeMinutes.getText().toString());
 
         // Create a new instance of TimePickerDialog and return it
         return new TimePickerDialog(getActivity(), this, hour, minute,
@@ -39,8 +34,10 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     }
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        String mTime = String.format("%02d:%02d", hourOfDay, minute);
-        mParent.mTxtScheduledTime.setText(mTime);
+        String hours = String.format("%02d", hourOfDay);
+        String minutes = String.format("%02d", minute);
+        mParent.mTxtScheduledTimeHours.setText(hours);
+        mParent.mTxtScheduledTimeMinutes.setText(minutes);
     }
 
 }

@@ -10,7 +10,8 @@ import android.widget.TextView;
 public class SetupActivity extends FragmentActivity {
 
     SetupActivity mActivity;
-    TextView mTxtScheduledTime;
+    TextView mTxtScheduledTimeHours;
+    TextView mTxtScheduledTimeMinutes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +21,8 @@ public class SetupActivity extends FragmentActivity {
     }
 
     public void showTimePickerDialog(View v) {
-        mTxtScheduledTime = (TextView) findViewById(R.id.txtScheduledTime);
+        mTxtScheduledTimeHours = (TextView) findViewById(R.id.txtScheduledTimeHours);
+        mTxtScheduledTimeMinutes = (TextView) findViewById(R.id.txtScheduledTimeMinutes);
         FragmentManager fm = this.getFragmentManager();
         TimePickerFragment newFragment = new TimePickerFragment();
         newFragment.setParent(mActivity);
