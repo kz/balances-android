@@ -3,6 +3,7 @@
 
     <string name="app_name">Balances for Whitgift School</string>
     <string name="pound_sign">\u00A3</string>
+    <string name="unknown">Unknown</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_setup">Setup Wizard</string>
     <string name="introduction_title">Welcome</string>
@@ -39,5 +40,9 @@
     <string name="finish_note">Note: Balances are not updated in realtime and are instead sent in batch from the tills to WisePay on a daily basis (usually after school).</string>
     <string name="main_settings">Settings</string>
     <string name="main_last_checked">Last checked:</string>
+    <string name="main_open_wisepay_website">Open WisePay Website</string>
+    <string name="main_check_balances">Check Balances</string>
+    <string name="main_checking">CHECKING</string>
+    <string name="main_checked">CHECKED</string>
 
 </resources>

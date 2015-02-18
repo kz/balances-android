@@ -74,7 +74,6 @@ public class SetupWizardStepLogin extends WizardStep {
 
                     // Send auth request
                     RestAdapter restAdapter = new RestAdapter.Builder()
-                            .setLogLevel(RestAdapter.LogLevel.FULL)
                             .setEndpoint(ENDPOINT)
                             .build();
                     WisePayService service = restAdapter.create(WisePayService.class);

@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/pound_sign"
+        android:text="@string/unknown"
         android:id="@+id/txtLunchBalance"
         android:layout_below="@+id/txtLunch"
         android:layout_alignParentLeft="true"
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/pound_sign"
+        android:text="@string/unknown"
         android:id="@+id/txtTuckBalance"
         android:layout_below="@+id/txtTuck"
         android:layout_alignLeft="@+id/txtTuck"
@@ -67,35 +67,21 @@
         android:id="@+id/btnCheckBalances"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Check Balances"
+        android:text="@string/main_check_balances"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         custom:pb_colorComplete="#4CAF50"
         custom:pb_colorNormal="@color/blue_normal"
         custom:pb_colorPressed="@color/blue_pressed"
         custom:pb_colorProgress="@color/purple_progress"
-        custom:pb_textComplete="@string/login_signed_in"
-        custom:pb_textProgress="@string/login_signing_in"
+        custom:pb_textComplete="@string/main_checking"
+        custom:pb_textProgress="@string/main_checked"
         custom:pb_textError="ERROR"
         custom:pb_colorError="@color/red_error"
-        android:layout_above="@+id/btnSettings"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="10dp" />
-
-    <com.dd.processbutton.FlatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_settings"
-        android:textColor="@android:color/white"
-        custom:pb_colorNormal="@android:color/holo_blue_light"
-        custom:pb_colorPressed="@android:color/holo_blue_dark"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/btnOpenWisePayWebsite"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/btnCheckBalances"
-        android:layout_alignEnd="@+id/btnCheckBalances"
-        android:id="@+id/btnSettings" />
+        android:layout_marginBottom="5sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -111,11 +97,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text=""
+        android:text="Unknown"
         android:id="@+id/txtLastCheckedDateTime"
         android:layout_alignBottom="@+id/txtLastChecked"
         android:layout_toRightOf="@+id/txtLastChecked"
         android:layout_toEndOf="@+id/txtLastChecked"
         android:layout_marginLeft="2sp" />
+
+    <com.dd.processbutton.FlatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_open_wisepay_website"
+        android:textColor="@android:color/white"
+        custom:pb_colorNormal="@android:color/holo_blue_light"
+        custom:pb_colorPressed="@android:color/holo_blue_dark"
+        android:id="@+id/btnOpenWisePayWebsite"
+        android:layout_above="@+id/btnSettings"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/btnSettings"
+        android:layout_alignEnd="@+id/btnSettings"
+        android:layout_marginBottom="5sp" />
+
+    <com.dd.processbutton.FlatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_settings"
+        android:textColor="@android:color/white"
+        custom:pb_colorNormal="@android:color/holo_blue_light"
+        custom:pb_colorPressed="@android:color/holo_blue_dark"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/btnCheckBalances"
+        android:layout_alignEnd="@+id/btnCheckBalances"
+        android:id="@+id/btnSettings" />
 
 </RelativeLayout>
