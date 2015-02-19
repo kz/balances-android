@@ -7,19 +7,24 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.dd.processbutton.iml.ActionProcessButton;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import com.google.gson.internal.LinkedTreeMap;
+
+import java.text.SimpleDateFormat;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import retrofit.converter.GsonConverter;
 
 public class MainActivity extends Activity {
 
@@ -51,7 +56,7 @@ public class MainActivity extends Activity {
         mBtnSettings = (Button) findViewById(R.id.btnSettings);
         mTxtLunchBalance = (TextView) findViewById(R.id.txtLunchBalance);
         mTxtTuckBalance = (TextView) findViewById(R.id.txtTuckBalance);
-        mTxtLastChecked = (TextView) findViewById(R.id.txtLastChecked);
+        mTxtLastChecked = (TextView) findViewById(R.id.txtLastCheckedDateTime);
 
         mBtnCheckBalances.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +68,9 @@ public class MainActivity extends Activity {
         mBtnOpenWisePayWebsite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Uri uriWisePay = Uri.parse("https://www.wisepay.co.uk/store/generic/template.asp?ACT=nav&mID=24022");
+                Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriWisePay);
+                startActivity(launchBrowser);
 
             }
         });
@@ -86,24 +94,47 @@ public class MainActivity extends Activity {
             String mUsername = mPreferences.getUsername();
             String mPassword = mPreferences.getPassword();
 
-            // Send auth request
+            // Set type adapter
+            Gson gson = new GsonBuilder()
+                    .registerTypeAdapter(Balances.class, new BalancesDeserializer())
+                    .create();
+
+            // Send balance request
             RestAdapter restAdapter = new RestAdapter.Builder()
-                    .setLogLevel(RestAdapter.LogLevel.FULL)
                     .setEndpoint(ENDPOINT)
+                    .setConverter(new GsonConverter(gson))
                     .build();
             WisePayService service = restAdapter.create(WisePayService.class);
 
-            Callback callback = new Callback() {
+            Callback<Balances> callback = new Callback<Balances>() {
                 @Override
-                public void success(Object o, Response response) {
+                public void success(Balances balances, Response response) {
+                    // Get balances
+                    Double lunch = balances.lunch;
+                    Double tuck = balances.tuck;
+                    lunch /= 100;
+                    tuck /= 100;
+                    String strLunch = String.format("%.2f",lunch);
+                    String strTuck = String.format("%.2f",tuck);
+
                     // Update balances
-                    LinkedTreeMap<String, String> balancesa = (LinkedTreeMap) o;
-                    Object balancesb = (Object) o.get("balances");
+                    mTxtLunchBalance.setText(getString(R.string.pound_sign) + strLunch);
+                    mTxtTuckBalance.setText(getString(R.string.pound_sign) + strTuck);
 
                     // Update last checked
+                    long lastChecked = System.currentTimeMillis();
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                    String strLastChecked = simpleDateFormat.format(lastChecked);
+                    mTxtLastChecked.setText(strLastChecked);
+
+                    // Update preferences
+                    mPreferences.setLunchBalance(strLunch);
+                    mPreferences.setTuckBalance(strTuck);
+                    mPreferences.setLastChecked(lastChecked);
 
                     // Change view properties
                     mBtnCheckBalances.setProgress(0);
+                    mBtnCheckBalances.setEnabled(true);
                 }
 
                 @Override

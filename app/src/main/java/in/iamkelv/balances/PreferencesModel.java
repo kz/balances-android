@@ -51,6 +51,18 @@ public class PreferencesModel {
 
     }
 
+    public String getLunchBalance() {
+        return mSettings.getString("lunch_balance", "");
+    }
+
+    public String getTuckBalance() {
+        return mSettings.getString("tuck_balance", "");
+    }
+
+    public long getLastChecked() {
+        return mSettings.getLong("last_checked", 0);
+    }
+
     public void setSetupState(Boolean setupState) {
         mEditor.putBoolean("setup_state", setupState);
         mEditor.commit();
@@ -96,5 +108,19 @@ public class PreferencesModel {
         mEditor.commit();
     }
 
+    public void setLunchBalance(String lunchBalance) {
+        mEditor.putString("lunch_balance", lunchBalance);
+        mEditor.commit();
+    }
+
+    public void setTuckBalance(String tuckBalance) {
+        mEditor.putString("tuck_balance", tuckBalance);
+        mEditor.commit();
+    }
+
+    public void setLastChecked(long lastChecked) {
+        mEditor.putLong("last_checked", lastChecked);
+        mEditor.commit();
+    }
 
 }

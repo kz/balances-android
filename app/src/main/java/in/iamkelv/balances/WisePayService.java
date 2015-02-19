@@ -16,6 +16,6 @@ public interface WisePayService {
     @FormUrlEncoded
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @POST("/balances")
-    void checkBalances(@Field("username") String username, @Field("password") String password, Callback<?> cb);
+    void checkBalances(@Field("username") String username, @Field("password") String password, Callback<Balances> cb);
 
 }

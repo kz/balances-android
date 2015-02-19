@@ -122,7 +122,6 @@ public class SetupWizardStepLogin extends WizardStep {
                                             }
                                         }).create().show();
                             }
-                            notifyCompleted();
                         }
                     };
 
