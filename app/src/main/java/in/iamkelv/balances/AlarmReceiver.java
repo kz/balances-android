@@ -24,6 +24,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver{
     }
 
     public void setAlarm(Context context) {
+        alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmReceiver.class);
         alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 
@@ -38,7 +39,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver{
         alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmIntent);
 
         // Enable automatic restart on device reboot
-        ComponentName receiver = new ComponentName(context, BootReceiver.class);
+        ComponentName receiver = new ComponentName(context, BootReceiver.class.getSimpleName());
         PackageManager pm = context.getPackageManager();
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
     }
@@ -49,7 +50,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver{
         }
 
         // Disable BootReceiver
-        ComponentName receiver = new ComponentName(context, BootReceiver.class);
+        ComponentName receiver = new ComponentName(context, BootReceiver.class.getSimpleName());
         PackageManager pm = context.getPackageManager();
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
     }
