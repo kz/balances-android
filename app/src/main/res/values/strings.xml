@@ -47,5 +47,6 @@
     <string name="title_activity_reauth">Reauthenticate</string>
     <string name="reauth_title">Reauthentication Needed</string>
     <string name="reauth_instructions">This app has been unable to log in using the WisePay login details you previously entered. You must enter your login details again before you can continue using this app.</string>
+    <string name="reauth_proceed_to_app">Proceed to App</string>
 
 </resources>

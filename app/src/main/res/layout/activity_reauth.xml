@@ -75,4 +75,19 @@
         android:layout_below="@+id/txtLoginPassword"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <com.dd.processbutton.FlatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reauth_proceed_to_app"
+        android:textColor="@android:color/white"
+        custom:pb_colorNormal="@android:color/holo_blue_light"
+        custom:pb_colorPressed="@android:color/holo_blue_dark"
+        android:id="@+id/btnProceedToApp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/btnSignIn"
+        android:layout_alignEnd="@+id/btnSignIn"
+        android:visibility="invisible" />
 </RelativeLayout>

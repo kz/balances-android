@@ -74,7 +74,7 @@ public class SetupWizardStepLogin extends WizardStep {
                     btnSignIn.setMode(ActionProcessButton.Mode.ENDLESS);
                     btnSignIn.setProgress(1);
 
-                    // Assign variables - TODO: Add check for empty username/password
+                    // Assign variables
                     mUsername = txtLoginUsername.getText().toString();
                     mPassword = txtLoginPassword.getText().toString();
 

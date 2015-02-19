@@ -168,37 +168,40 @@ public class MainActivity extends Activity {
 
                 @Override
                 public void failure(RetrofitError retrofitError) {
-                    // Change view properties
-                    mBtnCheckBalances.setProgress(0);
-                    mBtnCheckBalances.setEnabled(true);
-
-                    JsonObject jsonResponse = (JsonObject) retrofitError.getBodyAs(JsonObject.class);
-
-                    try {
-                        new AlertDialog.Builder(MainActivity.this)
-                                .setMessage("Error - " + jsonResponse.get("message").getAsString())
-                                .setCancelable(false)
-                                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int id) {
-                                    }
-                                }).create().show();
-                    } catch (NullPointerException e) {
-                        new AlertDialog.Builder(MainActivity.this)
-                                .setMessage("Error - An unknown error has occurred.")
-                                .setCancelable(false)
-                                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int id) {
-                                    }
-                                }).create().show();
-                    }
-
+                    // Check for authentication error
                     if (retrofitError.getResponse().getStatus() == 401) {
                         mPreferences.setAuthState(false);
                         Intent reauthIntent = new Intent(MainActivity.this, ReauthActivity.class);
                         MainActivity.this.startActivity(reauthIntent);
                         finish();
+                    } else {
+
+                        // Change view properties
+                        mBtnCheckBalances.setProgress(0);
+                        mBtnCheckBalances.setEnabled(true);
+
+                        JsonObject jsonResponse = (JsonObject) retrofitError.getBodyAs(JsonObject.class);
+
+                        try {
+                            new AlertDialog.Builder(MainActivity.this)
+                                    .setMessage("Error - " + jsonResponse.get("message").getAsString())
+                                    .setCancelable(false)
+                                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int id) {
+                                        }
+                                    }).create().show();
+                        } catch (NullPointerException e) {
+                            new AlertDialog.Builder(MainActivity.this)
+                                    .setMessage("Error - An unknown error has occurred.")
+                                    .setCancelable(false)
+                                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int id) {
+                                        }
+                                    }).create().show();
+                        }
+
                     }
                 }
             };

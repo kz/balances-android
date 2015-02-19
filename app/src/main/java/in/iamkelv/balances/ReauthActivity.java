@@ -1,18 +1,20 @@
 package in.iamkelv.balances;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.dd.processbutton.FlatButton;
 import com.dd.processbutton.iml.ActionProcessButton;
 import com.google.gson.JsonObject;
 
@@ -22,7 +24,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 
-public class ReauthActivity extends ActionBarActivity {
+public class ReauthActivity extends Activity {
 
     // Member variables
     private String mUsername = "";
@@ -31,6 +33,7 @@ public class ReauthActivity extends ActionBarActivity {
     EditText txtLoginPassword;
     ActionProcessButton btnSignIn;
     PreferencesModel preferences;
+    FlatButton btnProceedToApp;
 
     private final String ENDPOINT = "https://balances.iamkelv.in";
 
@@ -42,6 +45,7 @@ public class ReauthActivity extends ActionBarActivity {
         txtLoginUsername = (EditText) findViewById(R.id.txtLoginUsername);
         txtLoginPassword = (EditText) findViewById(R.id.txtLoginPassword);
         btnSignIn = (ActionProcessButton) findViewById(R.id.btnSignIn);
+        btnProceedToApp = (FlatButton) findViewById(R.id.btnProceedToApp);
         preferences = new PreferencesModel(this);
 
         if (!preferences.getUsername().equals("")) {
@@ -64,7 +68,7 @@ public class ReauthActivity extends ActionBarActivity {
                     btnSignIn.setMode(ActionProcessButton.Mode.ENDLESS);
                     btnSignIn.setProgress(1);
 
-                    // Assign variables - TODO: Add check for empty username/password
+                    // Assign variables
                     mUsername = txtLoginUsername.getText().toString();
                     mPassword = txtLoginPassword.getText().toString();
 
@@ -83,6 +87,7 @@ public class ReauthActivity extends ActionBarActivity {
 
                             // Change view properties
                             btnSignIn.setProgress(100);
+                            fadeIn(btnProceedToApp);
                         }
 
                         @Override
@@ -134,7 +139,15 @@ public class ReauthActivity extends ActionBarActivity {
             }
         });
 
-
+        btnProceedToApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                preferences.setAuthState(true);
+                Intent mainIntent= new Intent(ReauthActivity.this, MainActivity.class);
+                ReauthActivity.this.startActivity(mainIntent);
+                finish();
+            }
+        });
     }
 
     private boolean isNetworkAvailable() {
@@ -149,25 +162,24 @@ public class ReauthActivity extends ActionBarActivity {
         return isAvailable;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_reauth, menu);
-        return true;
+    private void fadeIn(final View view) {
+        final AlphaAnimation fadeOutAnimation = new AlphaAnimation(0.0F,  1.0F);
+        fadeOutAnimation.setDuration(100);
+        fadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                view.setVisibility(View.VISIBLE);
+            }
+        });
+        view.startAnimation(fadeOutAnimation);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
