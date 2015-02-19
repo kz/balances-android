@@ -49,6 +49,10 @@ public class MainActivity extends Activity {
             Intent setupIntent = new Intent(MainActivity.this, SetupActivity.class);
             MainActivity.this.startActivity(setupIntent);
             finish();
+        } else if (!mPreferences.getAuthState()) {
+            Intent reauthIntent = new Intent(MainActivity.this, ReauthActivity.class);
+            MainActivity.this.startActivity(reauthIntent);
+            finish();
         }
 
         mBtnCheckBalances = (ActionProcessButton) findViewById(R.id.btnCheckBalances);
@@ -81,6 +85,31 @@ public class MainActivity extends Activity {
 
             }
         });
+
+        // Populate balances
+        String strLunch = mPreferences.getLunchBalance();
+        String strTuck = mPreferences.getTuckBalance();
+        long lastChecked = mPreferences.getLastChecked();
+
+        if (strLunch.equals("")) {
+            mTxtLunchBalance.setText(getString(R.string.unknown));
+        } else {
+            mTxtLunchBalance.setText(getString(R.string.pound_sign) + strLunch);
+        }
+
+        if (strTuck.equals("")) {
+            mTxtTuckBalance.setText(getString(R.string.unknown));
+        } else {
+            mTxtTuckBalance.setText(getString(R.string.pound_sign) + strTuck);
+        }
+
+        if (lastChecked == 0) {
+            mTxtLastChecked.setText(R.string.unknown);
+        } else {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String strLastChecked = simpleDateFormat.format(lastChecked);
+            mTxtLastChecked.setText(strLastChecked);
+        }
 
     }
 
@@ -163,6 +192,13 @@ public class MainActivity extends Activity {
                                     public void onClick(DialogInterface dialog, int id) {
                                     }
                                 }).create().show();
+                    }
+
+                    if (retrofitError.getResponse().getStatus() == 401) {
+                        mPreferences.setAuthState(false);
+                        Intent reauthIntent = new Intent(MainActivity.this, ReauthActivity.class);
+                        MainActivity.this.startActivity(reauthIntent);
+                        finish();
                     }
                 }
             };
