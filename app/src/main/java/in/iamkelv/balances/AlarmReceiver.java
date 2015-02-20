@@ -40,7 +40,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver{
 
         // Enable automatic restart on device reboot
         ComponentName receiver = new ComponentName(context, BootReceiver.class.getSimpleName());
-        PackageManager pm = context.getPackageManager();
+        PackageManager pm = context.getApplicationContext().getPackageManager();
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
     }
 
