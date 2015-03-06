@@ -22,6 +22,10 @@ public class PreferencesModel {
         return mSettings.getBoolean("auth_state", true);
     }
 
+    public boolean getIndevState() {
+        return mSettings.getBoolean("indev_state", false);
+    }
+
     public String getUsername() {
         return mSettings.getString("username", "");
     }
@@ -70,6 +74,11 @@ public class PreferencesModel {
 
     public void setAuthState(Boolean authState) {
         mEditor.putBoolean("auth_state", authState);
+        mEditor.commit();
+    }
+
+    public void setIndevState(Boolean indevState) {
+        mEditor.putBoolean("indev_state", indevState);
         mEditor.commit();
     }
 

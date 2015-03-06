@@ -44,8 +44,7 @@ public class MainActivity extends Activity {
 
         // Check if initial setup is required
         mPreferences = new PreferencesModel(this);
-        Boolean setupState = mPreferences.getSetupState();
-        if (!setupState) {
+        if (!mPreferences.getSetupState()) {
             Intent setupIntent = new Intent(MainActivity.this, SetupActivity.class);
             MainActivity.this.startActivity(setupIntent);
             finish();
@@ -53,6 +52,16 @@ public class MainActivity extends Activity {
             Intent reauthIntent = new Intent(MainActivity.this, ReauthActivity.class);
             MainActivity.this.startActivity(reauthIntent);
             finish();
+        } else if (!mPreferences.getIndevState()) { // Check if app is still indev - TODO - Remove once notifications fixed
+            new AlertDialog.Builder(MainActivity.this)
+                    .setMessage("Scheduled notifications is still in development and will be available in the next update. In the meantime, you\'ll have to open this app to check your balances.")
+                    .setCancelable(false)
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                        }
+                    }).create().show();
+            mPreferences.setIndevState(true);
         }
 
         mBtnCheckBalances = (ActionProcessButton) findViewById(R.id.btnCheckBalances);
@@ -82,7 +91,15 @@ public class MainActivity extends Activity {
         mBtnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                new AlertDialog.Builder(MainActivity.this)
+                        .setMessage("Settings will become available in a future update.")
+                        .setCancelable(false)
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                            }
+                        }).create().show();
+                mPreferences.setIndevState(true);
             }
         });
 
