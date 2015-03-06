@@ -28,12 +28,13 @@
             android:name=".ReauthActivity"
             android:label="@string/title_activity_reauth" >
         </activity>
+<!--    TODO
         <receiver android:name=".BootReceiver"
             android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
-        </receiver>
+        </receiver>-->
     </application>
 
 </manifest>

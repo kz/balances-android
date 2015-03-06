@@ -1,3 +1,4 @@
+/* TODO
 package in.iamkelv.balances;
 
 import android.app.IntentService;
@@ -34,11 +35,14 @@ public class SchedulingService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        if (isNetworkAvailable()) {
+        sendNotification("Balances Low", "Your lunch and tuck balances are low.");
+        */
+/*if (isNetworkAvailable()) {
             checkBalances();
         } else {
             sendNotification("Balances - Error", "There is no internet connection. Your balances have not been checked.");
-        }
+        }*//*
+
 
 
         // Release wake lock
@@ -146,3 +150,4 @@ public class SchedulingService extends IntentService {
     }
 
 }
+*/

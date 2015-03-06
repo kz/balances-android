@@ -1,3 +1,4 @@
+/* TODO
 package in.iamkelv.balances;
 
 import android.app.AlarmManager;
@@ -36,7 +37,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver{
         calendar.set(Calendar.MINUTE, preferences.getNotificationMinutes());
 
         // Set alarm to fire at specified time, rebooting once per day
-        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmIntent);
+        alarmMgr.setRepeating(AlarmManager.RTC, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmIntent);
 
         // Enable automatic restart on device reboot
         ComponentName receiver = new ComponentName(context, BootReceiver.class);
@@ -55,3 +56,4 @@ public class AlarmReceiver extends WakefulBroadcastReceiver{
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
     }
 }
+*/
