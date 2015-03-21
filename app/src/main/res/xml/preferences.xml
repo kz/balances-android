@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Notifications">
+        <CheckBoxPreference
+            android:key="notification_state"
+            android:title="Enable notifications"
+            android:summary="Once enabled, you will be notified daily if your balances fall beneath the thresholds specified below"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Reset">
+        <Preference
+            android:key="reset"
+            android:title="Reset app settings"
+            android:summary="Clears all settings including WisePay account details" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

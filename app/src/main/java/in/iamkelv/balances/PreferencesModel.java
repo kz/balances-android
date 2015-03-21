@@ -52,7 +52,6 @@ public class PreferencesModel {
 
     public int getTuckThreshold() {
         return mSettings.getInt("tuck_threshold", 10);
-
     }
 
     public String getLunchBalance() {
@@ -129,6 +128,11 @@ public class PreferencesModel {
 
     public void setLastChecked(long lastChecked) {
         mEditor.putLong("last_checked", lastChecked);
+        mEditor.commit();
+    }
+
+    public void clearPreferences() {
+        mEditor.clear();
         mEditor.commit();
     }
 

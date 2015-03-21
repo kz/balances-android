@@ -91,15 +91,8 @@ public class MainActivity extends Activity {
         mBtnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AlertDialog.Builder(MainActivity.this)
-                        .setMessage("Settings will become available in a future update.")
-                        .setCancelable(false)
-                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                            }
-                        }).create().show();
-                mPreferences.setIndevState(true);
+                Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+                MainActivity.this.startActivity(settingsIntent);
             }
         });
 
