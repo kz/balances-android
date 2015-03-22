@@ -8,7 +8,7 @@ import android.text.format.DateFormat;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener{
+public class SetupTimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
     SetupActivity mParent;
 

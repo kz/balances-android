@@ -1,20 +1,26 @@
 package in.iamkelv.balances;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
-public class SettingsFragment extends PreferenceFragment {
+public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Load the preferences from an XML resource
+        getPreferenceManager().setSharedPreferencesName("BalancesPrefs");
         addPreferencesFromResource(R.xml.preferences);
 
-        Preference resetPreference = findPreference("reset");
+        // Update preferences
+        updatePreferenceEnabledState();
+
+        // Handle reset button click
+        Preference resetPreference = findPreference("prefs_reset");
         resetPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick (Preference pref){
                 PreferencesModel mPreferences = new PreferencesModel(getActivity());
@@ -25,8 +31,33 @@ public class SettingsFragment extends PreferenceFragment {
                 return true;
             }
         });
+    }
 
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals("notification_state")) {
+            updatePreferenceEnabledState();
+        }
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+
+    }
+
+    @Override
+    public void onPause() {
+        getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+        super.onPause();
+    }
+
+    public void updatePreferenceEnabledState() {
+        boolean notificationState = getPreferenceManager().getSharedPreferences().getBoolean("notification_state", false);
+        findPreference("prefs_time").setEnabled(notificationState);
+        findPreference("prefs_lunch").setEnabled(notificationState);
+        findPreference("prefs_tuck").setEnabled(notificationState);
     }
 
 }

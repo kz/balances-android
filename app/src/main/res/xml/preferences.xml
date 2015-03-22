@@ -7,11 +7,23 @@
             android:title="Enable notifications"
             android:summary="Once enabled, you will be notified daily if your balances fall beneath the thresholds specified below"
             android:defaultValue="false" />
+        <in.iamkelv.balances.TimePickerPreference
+            android:key="prefs_time"
+            android:title="Set time"
+            android:summary="Your balances will be checked daily at: " />
+        <Preference
+            android:key="prefs_lunch"
+            android:title="Lunch threshold"
+            android:summary="You will be notified if your lunch balance falls under: " />
+        <Preference
+            android:key="prefs_tuck"
+            android:title="Tuck threshold"
+            android:summary="You will be notified if your tuck balance falls under: " />
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="Reset">
+        android:title="Additional settings">
         <Preference
-            android:key="reset"
+            android:key="prefs_reset"
             android:title="Reset app settings"
             android:summary="Clears all settings including WisePay account details" />
     </PreferenceCategory>

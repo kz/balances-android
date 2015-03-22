@@ -24,7 +24,7 @@ public class SetupActivity extends FragmentActivity {
         mTxtScheduledTimeHours = (TextView) findViewById(R.id.txtScheduledTimeHours);
         mTxtScheduledTimeMinutes = (TextView) findViewById(R.id.txtScheduledTimeMinutes);
         FragmentManager fm = this.getFragmentManager();
-        TimePickerFragment newFragment = new TimePickerFragment();
+        SetupTimePickerFragment newFragment = new SetupTimePickerFragment();
         newFragment.setParent(mActivity);
         newFragment.show(fm, "timePicker");
     }

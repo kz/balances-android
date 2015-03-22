@@ -45,7 +45,7 @@ public class SetupWizardStepNotifications extends WizardStep {
         preferences.setLunchThreshold(10);
         preferences.setTuckThreshold(10);
         preferences.setNotificationHours(18);
-        preferences.setNotificationHours(0);
+        preferences.setNotificationMinutes(0);
 
         chkNotificationsEnable.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
