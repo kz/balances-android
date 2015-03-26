@@ -1,5 +1,3 @@
-// TODO: DEBUG AND FIX ALARMS
-
 package in.iamkelv.balances.alarms;
 
 import android.app.AlarmManager;

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -42,12 +43,10 @@ public class SchedulingService extends IntentService {
 /*
         if (isNetworkAvailable()) {
             checkBalances();
-        } else {
-            sendNotification("Balances - Error", "There is no internet connection. Your balances have not been checked.");
         }
 */
 
-        sendNotification("Balances", "Test");
+        Log.w("BALANCES", "TEST");
 
         AlarmReceiver.completeWakefulIntent(intent);
     }
