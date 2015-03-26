@@ -7,15 +7,15 @@
             android:title="Enable notifications"
             android:summary="Once enabled, you will be notified daily if your balances fall beneath the thresholds specified below"
             android:defaultValue="false" />
-        <in.iamkelv.balances.TimePickerPreference
+        <in.iamkelv.balances.preferences.TimePickerPreference
             android:key="prefs_time"
             android:title="@string/prefs_time_title"
             android:summary="@string/prefs_time_summary" />
-        <Preference
+        <in.iamkelv.balances.preferences.ThresholdPickerPreference
             android:key="prefs_lunch"
             android:title="@string/prefs_lunch_title"
             android:summary="@string/prefs_lunch_summary" />
-        <Preference
+        <in.iamkelv.balances.preferences.ThresholdPickerPreference
             android:key="prefs_tuck"
             android:title="@string/prefs_tuck_title"
             android:summary="@string/prefs_tuck_summary" />

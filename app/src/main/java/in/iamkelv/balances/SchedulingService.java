@@ -13,9 +13,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
-import in.iamkelv.balances.model.Balances;
-import in.iamkelv.balances.model.BalancesDeserializer;
-import in.iamkelv.balances.model.WisePayService;
+import in.iamkelv.balances.activities.MainActivity;
+import in.iamkelv.balances.models.Balances;
+import in.iamkelv.balances.models.BalancesDeserializer;
+import in.iamkelv.balances.models.PreferencesModel;
+import in.iamkelv.balances.models.WisePayService;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;

@@ -12,6 +12,8 @@ import android.support.v4.content.WakefulBroadcastReceiver;
 
 import java.util.Calendar;
 
+import in.iamkelv.balances.models.PreferencesModel;
+
 public class AlarmReceiver extends WakefulBroadcastReceiver{
 
     private AlarmManager alarmMgr;
