@@ -54,7 +54,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver{
         }
 
         // Disable BootReceiver
-        ComponentName receiver = new ComponentName(context, BootReceiver.class.getSimpleName());
+        ComponentName receiver = new ComponentName(context, BootReceiver.class);
         PackageManager pm = context.getPackageManager();
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
     }

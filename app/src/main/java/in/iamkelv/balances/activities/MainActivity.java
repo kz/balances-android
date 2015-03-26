@@ -116,6 +116,8 @@ public class MainActivity extends Activity {
             mTxtLastChecked.setText(strLastChecked);
         }
 
+        // TODO: Check alarm
+
     }
 
     private void checkBalances() {

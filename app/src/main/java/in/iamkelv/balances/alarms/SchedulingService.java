@@ -39,13 +39,15 @@ public class SchedulingService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+/*
         if (isNetworkAvailable()) {
             checkBalances();
         } else {
             sendNotification("Balances - Error", "There is no internet connection. Your balances have not been checked.");
         }
+*/
 
-
+        sendNotification("Balances", "Test");
 
         AlarmReceiver.completeWakefulIntent(intent);
     }
@@ -67,6 +69,8 @@ public class SchedulingService extends IntentService {
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
 
+
+/*
     private void checkBalances() {
 
         // Assign variables
@@ -149,5 +153,6 @@ public class SchedulingService extends IntentService {
 
         return isAvailable;
     }
+*/
 
 }
