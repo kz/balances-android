@@ -1,4 +1,4 @@
-package in.iamkelv.balances.wizards.setupwizard;
+package in.iamkelv.balances.setupwizard;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -19,7 +19,7 @@ import org.codepond.wizardroid.WizardStep;
 
 import in.iamkelv.balances.PreferencesModel;
 import in.iamkelv.balances.R;
-import in.iamkelv.balances.WisePayService;
+import in.iamkelv.balances.model.WisePayService;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;

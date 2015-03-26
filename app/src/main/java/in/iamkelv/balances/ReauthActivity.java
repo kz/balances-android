@@ -18,6 +18,7 @@ import com.dd.processbutton.FlatButton;
 import com.dd.processbutton.iml.ActionProcessButton;
 import com.google.gson.JsonObject;
 
+import in.iamkelv.balances.model.WisePayService;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;

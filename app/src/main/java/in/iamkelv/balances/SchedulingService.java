@@ -1,4 +1,3 @@
-/* TODO
 package in.iamkelv.balances;
 
 import android.app.IntentService;
@@ -14,6 +13,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
+import in.iamkelv.balances.model.Balances;
+import in.iamkelv.balances.model.BalancesDeserializer;
+import in.iamkelv.balances.model.WisePayService;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -35,17 +37,14 @@ public class SchedulingService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        sendNotification("Balances Low", "Your lunch and tuck balances are low.");
-        */
-/*if (isNetworkAvailable()) {
+        if (isNetworkAvailable()) {
             checkBalances();
         } else {
             sendNotification("Balances - Error", "There is no internet connection. Your balances have not been checked.");
-        }*//*
+        }
 
 
 
-        // Release wake lock
         AlarmReceiver.completeWakefulIntent(intent);
     }
 
@@ -58,7 +57,7 @@ public class SchedulingService extends IntentService {
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.ic_launcher)
+                        // .setSmallIcon(R.drawable.ic_launcher) TODO: FIX
                         .setContentTitle(title)
                         .setContentText(message);
 
@@ -150,4 +149,3 @@ public class SchedulingService extends IntentService {
     }
 
 }
-*/

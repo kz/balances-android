@@ -9,23 +9,23 @@
             android:defaultValue="false" />
         <in.iamkelv.balances.TimePickerPreference
             android:key="prefs_time"
-            android:title="Set time"
-            android:summary="Your balances will be checked daily at: " />
+            android:title="@string/prefs_time_title"
+            android:summary="@string/prefs_time_summary" />
         <Preference
             android:key="prefs_lunch"
-            android:title="Lunch threshold"
-            android:summary="You will be notified if your lunch balance falls under: " />
+            android:title="@string/prefs_lunch_title"
+            android:summary="@string/prefs_lunch_summary" />
         <Preference
             android:key="prefs_tuck"
-            android:title="Tuck threshold"
-            android:summary="You will be notified if your tuck balance falls under: " />
+            android:title="@string/prefs_tuck_title"
+            android:summary="@string/prefs_tuck_summary" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="Additional settings">
         <Preference
             android:key="prefs_reset"
-            android:title="Reset app settings"
-            android:summary="Clears all settings including WisePay account details" />
+            android:title="@string/prefs_reset_title"
+            android:summary="@string/prefs_reset_summary" />
     </PreferenceCategory>
 
 </PreferenceScreen>

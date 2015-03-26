@@ -20,6 +20,9 @@ import com.google.gson.JsonObject;
 
 import java.text.SimpleDateFormat;
 
+import in.iamkelv.balances.model.Balances;
+import in.iamkelv.balances.model.BalancesDeserializer;
+import in.iamkelv.balances.model.WisePayService;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;

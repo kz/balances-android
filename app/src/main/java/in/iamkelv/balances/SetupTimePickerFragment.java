@@ -30,6 +30,7 @@ public class SetupTimePickerFragment extends DialogFragment implements TimePicke
     }
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        //TODO : Use placeholders
         String hours = String.format("%02d", hourOfDay);
         String minutes = String.format("%02d", minute);
         mParent.mTxtScheduledTimeHours.setText(hours);

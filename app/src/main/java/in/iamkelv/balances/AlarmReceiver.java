@@ -1,4 +1,5 @@
-/* TODO
+// TODO: DEBUG AND FIX ALARMS
+
 package in.iamkelv.balances;
 
 import android.app.AlarmManager;
@@ -56,4 +57,3 @@ public class AlarmReceiver extends WakefulBroadcastReceiver{
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
     }
 }
-*/

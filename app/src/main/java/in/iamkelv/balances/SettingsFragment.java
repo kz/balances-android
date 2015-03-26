@@ -8,6 +8,8 @@ import android.preference.PreferenceFragment;
 
 public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
+    private PreferencesModel mPreferences;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,15 +17,16 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         // Load the preferences from an XML resource
         getPreferenceManager().setSharedPreferencesName("BalancesPrefs");
         addPreferencesFromResource(R.xml.preferences);
+        mPreferences = new PreferencesModel(getActivity());
 
         // Update preferences
         updatePreferenceEnabledState();
+        updatePreferenceSummary();
 
         // Handle reset button click
         Preference resetPreference = findPreference("prefs_reset");
         resetPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick (Preference pref){
-                PreferencesModel mPreferences = new PreferencesModel(getActivity());
                 mPreferences.clearPreferences();
                 Intent setupIntent = new Intent(getActivity(), SetupActivity.class);
                 getActivity().startActivity(setupIntent);
@@ -37,6 +40,8 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals("notification_state")) {
             updatePreferenceEnabledState();
+        } else {
+            updatePreferenceSummary();
         }
     }
 
@@ -53,11 +58,17 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         super.onPause();
     }
 
-    public void updatePreferenceEnabledState() {
+    private void updatePreferenceEnabledState() {
         boolean notificationState = getPreferenceManager().getSharedPreferences().getBoolean("notification_state", false);
         findPreference("prefs_time").setEnabled(notificationState);
         findPreference("prefs_lunch").setEnabled(notificationState);
         findPreference("prefs_tuck").setEnabled(notificationState);
+    }
+
+    private void updatePreferenceSummary() {
+        findPreference("prefs_time").setSummary(String.format(getResources().getString(R.string.prefs_time_summary),mPreferences.getNotificationHours(),mPreferences.getNotificationMinutes()));
+        findPreference("prefs_lunch").setSummary(String.format(getResources().getString(R.string.prefs_lunch_summary),mPreferences.getLunchThreshold()));
+        findPreference("prefs_tuck").setSummary(String.format(getResources().getString(R.string.prefs_tuck_summary),mPreferences.getTuckThreshold()));
     }
 
 }

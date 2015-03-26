@@ -1,4 +1,4 @@
-package in.iamkelv.balances;
+package in.iamkelv.balances.model;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonDeserializationContext;

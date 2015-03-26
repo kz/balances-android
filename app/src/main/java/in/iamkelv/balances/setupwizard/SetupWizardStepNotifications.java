@@ -1,4 +1,4 @@
-package in.iamkelv.balances.wizards.setupwizard;
+package in.iamkelv.balances.setupwizard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package in.iamkelv.balances;
+package in.iamkelv.balances.model;
 
 import retrofit.Callback;
 import retrofit.http.Field;
