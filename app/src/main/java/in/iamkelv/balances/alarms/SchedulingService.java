@@ -38,7 +38,7 @@ public class SchedulingService extends IntentService {
     public SchedulingService() {
         super("SchedulingService");
 
-        mPreferences = new PreferencesModel(getBaseContext());
+        // mPreferences = new PreferencesModel(getBaseContext());
     }
 
     @Override
@@ -49,11 +49,12 @@ public class SchedulingService extends IntentService {
         }
 */
 
-        Log.w("BALANCES", "TEST");
+        Log.e("BALANCES", "TEST");
 
         AlarmReceiver.completeWakefulIntent(intent);
     }
 
+    /*
     private void sendNotification(String title, String message) {
         mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -72,7 +73,7 @@ public class SchedulingService extends IntentService {
     }
 
 
-/*
+
     private void checkBalances() {
 
         // Assign variables
