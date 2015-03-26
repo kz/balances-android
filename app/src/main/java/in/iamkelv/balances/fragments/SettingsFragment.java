@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
+import in.iamkelv.balances.alarms.AlarmReceiver;
 import in.iamkelv.balances.R;
 import in.iamkelv.balances.activities.SetupActivity;
 import in.iamkelv.balances.models.PreferencesModel;
@@ -24,8 +25,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         mPreferences = new PreferencesModel(getActivity());
 
         // Update preferences
-        updatePreferenceEnabledState();
-        updatePreferenceSummary();
+        updatePreferences();
 
         // Handle reset button click
         Preference resetPreference = findPreference("prefs_reset");
@@ -42,11 +42,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (key.equals("notification_state")) {
-            updatePreferenceEnabledState();
-        } else {
-            updatePreferenceSummary();
-        }
+        updatePreferences();
     }
 
     @Override
@@ -62,17 +58,21 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         super.onPause();
     }
 
-    private void updatePreferenceEnabledState() {
+    private void updatePreferences() {
         boolean notificationState = getPreferenceManager().getSharedPreferences().getBoolean("notification_state", false);
         findPreference("prefs_time").setEnabled(notificationState);
         findPreference("prefs_lunch").setEnabled(notificationState);
         findPreference("prefs_tuck").setEnabled(notificationState);
-    }
 
-    private void updatePreferenceSummary() {
-        findPreference("prefs_time").setSummary(String.format(getResources().getString(R.string.prefs_time_summary),mPreferences.getNotificationHours(),mPreferences.getNotificationMinutes()));
-        findPreference("prefs_lunch").setSummary(String.format(getResources().getString(R.string.prefs_lunch_summary),mPreferences.getLunchThreshold()));
-        findPreference("prefs_tuck").setSummary(String.format(getResources().getString(R.string.prefs_tuck_summary),mPreferences.getTuckThreshold()));
+        AlarmReceiver alarm = new AlarmReceiver();
+        alarm.cancelAlarm(getActivity());
+        if (notificationState) {
+            alarm.setAlarm(getActivity());
+        }
+
+        findPreference("prefs_time").setSummary(String.format(getString(R.string.prefs_time_summary), mPreferences.getNotificationHours(), mPreferences.getNotificationMinutes()));
+        findPreference("prefs_lunch").setSummary(String.format(getString(R.string.prefs_lunch_summary),(mPreferences.getLunchThreshold() == 0) ? "Disabled" : getString(R.string.pound_sign) + mPreferences.getLunchThreshold() + ".00"));
+        findPreference("prefs_tuck").setSummary(String.format(getResources().getString(R.string.prefs_tuck_summary),(mPreferences.getTuckThreshold() == 0) ? "Disabled" : getString(R.string.pound_sign) + mPreferences.getTuckThreshold() + ".00"));
     }
 
 }

@@ -1,4 +1,4 @@
-package in.iamkelv.balances;
+package in.iamkelv.balances.alarms;
 
 import android.app.IntentService;
 import android.app.NotificationManager;

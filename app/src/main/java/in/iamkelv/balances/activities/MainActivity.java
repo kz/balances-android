@@ -57,16 +57,6 @@ public class MainActivity extends Activity {
             Intent reauthIntent = new Intent(MainActivity.this, ReauthActivity.class);
             MainActivity.this.startActivity(reauthIntent);
             finish();
-        } else if (!mPreferences.getIndevState()) { // Check if app is still indev - TODO - Remove once notifications fixed
-            new AlertDialog.Builder(MainActivity.this)
-                    .setMessage("Scheduled notifications is still in development and will be available in the next update. In the meantime, you\'ll have to open this app to check your balances.")
-                    .setCancelable(false)
-                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int id) {
-                        }
-                    }).create().show();
-            mPreferences.setIndevState(true);
         }
 
         mBtnCheckBalances = (ActionProcessButton) findViewById(R.id.btnCheckBalances);

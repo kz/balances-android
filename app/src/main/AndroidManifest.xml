@@ -28,7 +28,7 @@
             android:name=".activities.ReauthActivity"
             android:label="@string/title_activity_reauth" >
         </activity>
-        <receiver android:name=".BootReceiver"
+        <receiver android:name=".alarms.BootReceiver"
             android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

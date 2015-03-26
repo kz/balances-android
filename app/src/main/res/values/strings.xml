@@ -52,11 +52,12 @@
     <string name="prefs_time_summary">Your balances will be checked daily at: %1$02d:%2$02d</string>
     <string name="prefs_time_title">Set time</string>
     <string name="prefs_lunch_title">Set lunch threshold</string>
-    <string name="prefs_lunch_summary">You will be notified if your lunch balance falls under: £%1$d.00</string>
+    <string name="prefs_lunch_summary">You will be notified if your lunch balance falls under: %1$s</string>
     <string name="prefs_tuck_title">Set tuck threshold</string>
-    <string name="prefs_tuck_summary">You will be notified if your tuck balance falls under: £%1$d.00</string>
+    <string name="prefs_tuck_summary">You will be notified if your tuck balance falls under: %1$s</string>
     <string name="prefs_reset_title">Reset app settings</string>
     <string name="prefs_reset_summary">Clears all settings including WisePay account details</string>
+    <string name="thpicker_threshold">Threshold: %1$s</string>
 
 
 </resources>
