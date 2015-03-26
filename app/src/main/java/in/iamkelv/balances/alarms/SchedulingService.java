@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
+import in.iamkelv.balances.BalancesApp;
 import in.iamkelv.balances.activities.MainActivity;
 import in.iamkelv.balances.models.Balances;
 import in.iamkelv.balances.models.BalancesDeserializer;
@@ -28,7 +29,7 @@ import retrofit.converter.GsonConverter;
 public class SchedulingService extends IntentService {
 
     private final String ENDPOINT = "https://balances.iamkelv.in";
-    PreferencesModel mPreferences = new PreferencesModel(this);
+    private PreferencesModel mPreferences;
     private NotificationManager mNotificationManager;
     public static final int NOTIFICATION_ID = 1;
     NotificationCompat.Builder builder;
@@ -36,6 +37,8 @@ public class SchedulingService extends IntentService {
 
     public SchedulingService() {
         super("SchedulingService");
+
+        mPreferences = new PreferencesModel(getBaseContext());
     }
 
     @Override
