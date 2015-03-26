@@ -28,12 +28,14 @@
             android:name=".activities.ReauthActivity"
             android:label="@string/title_activity_reauth" >
         </activity>
+        <receiver android:name=".alarms.AlarmReceiver"/>
         <receiver android:name=".alarms.BootReceiver"
             android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
+        <service android:name=".alarms.SchedulingService" />
         <activity
             android:name=".activities.SettingsActivity"
             android:label="@string/title_activity_settings"
