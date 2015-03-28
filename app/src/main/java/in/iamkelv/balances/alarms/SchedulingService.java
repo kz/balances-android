@@ -15,6 +15,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 import in.iamkelv.balances.BalancesApp;
+import in.iamkelv.balances.R;
 import in.iamkelv.balances.activities.MainActivity;
 import in.iamkelv.balances.models.Balances;
 import in.iamkelv.balances.models.BalancesDeserializer;
@@ -44,18 +45,15 @@ public class SchedulingService extends IntentService {
 
         mPreferences = new PreferencesModel(this);
 
-/*
         if (isNetworkAvailable()) {
             checkBalances();
         }
-*/
 
         Log.e("BALANCES", "TEST");
 
         AlarmReceiver.completeWakefulIntent(intent);
     }
 
-    /*
     private void sendNotification(String title, String message) {
         mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -65,7 +63,7 @@ public class SchedulingService extends IntentService {
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-                        // .setSmallIcon(R.drawable.ic_launcher) TODO: FIX
+                        .setSmallIcon(R.drawable.ic_notification)
                         .setContentTitle(title)
                         .setContentText(message);
 
@@ -157,6 +155,5 @@ public class SchedulingService extends IntentService {
 
         return isAvailable;
     }
-*/
 
 }
