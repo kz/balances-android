@@ -20,6 +20,7 @@ import com.google.gson.JsonObject;
 
 import java.text.SimpleDateFormat;
 
+import in.iamkelv.balances.alarms.AlarmReceiver;
 import in.iamkelv.balances.models.PreferencesModel;
 import in.iamkelv.balances.R;
 import in.iamkelv.balances.models.Balances;
@@ -116,7 +117,13 @@ public class MainActivity extends Activity {
             mTxtLastChecked.setText(strLastChecked);
         }
 
-        // TODO: Check alarm
+        // Check alarm settings
+        boolean notificationState = mPreferences.getNotificationState();
+        AlarmReceiver alarm = new AlarmReceiver();
+        alarm.cancelAlarm(this);
+        if (notificationState) {
+            alarm.setAlarm(this);
+        }
 
     }
 

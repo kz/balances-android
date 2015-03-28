@@ -72,11 +72,6 @@ public class PreferencesModel {
         mEditor.commit();
     }
 
-    public void setIndevState(Boolean indevState) {
-        mEditor.putBoolean("indev_state", indevState);
-        mEditor.commit();
-    }
-
     public void setUsername(String username) {
         mEditor.putString("username", username);
         mEditor.commit();
