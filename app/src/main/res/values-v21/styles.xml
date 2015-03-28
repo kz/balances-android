@@ -1,0 +1,10 @@
+<resources>
+    <!-- inherit from the material theme -->
+    <style name="AppTheme" parent="AppTheme.Base">
+        <!-- Main theme colors -->
+        <!--   your app branding color for the app bar -->
+        <item name="android:colorPrimary">#2196F3</item>
+        <!--   darker variant for the status bar and contextual app bars -->
+        <item name="android:colorPrimaryDark">#2196F3</item>
+    </style>
+</resources>

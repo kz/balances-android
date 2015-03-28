@@ -14,7 +14,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
-import in.iamkelv.balances.BalancesApp;
 import in.iamkelv.balances.R;
 import in.iamkelv.balances.activities.MainActivity;
 import in.iamkelv.balances.models.Balances;
@@ -42,14 +41,14 @@ public class SchedulingService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-
+        Log.i("Balances", "Starting notification check");
         mPreferences = new PreferencesModel(this);
-
         if (isNetworkAvailable()) {
             checkBalances();
+        } else {
+            Log.e("Balances", "Network Unavailable");
         }
-
-        Log.e("BALANCES", "TEST");
+        Log.i("Balances", "Notification check complete");
 
         AlarmReceiver.completeWakefulIntent(intent);
     }
@@ -90,7 +89,6 @@ public class SchedulingService extends IntentService {
                 .setConverter(new GsonConverter(gson))
                 .build();
         WisePayService service = restAdapter.create(WisePayService.class);
-
         Callback<Balances> callback = new Callback<Balances>() {
             @Override
             public void success(Balances balances, Response response) {
@@ -109,24 +107,25 @@ public class SchedulingService extends IntentService {
                 mPreferences.setTuckBalance(strTuck);
                 mPreferences.setLastChecked(System.currentTimeMillis());
 
-                int lunchThreshold = mPreferences.getLunchThreshold();
-                int tuckThreshold = mPreferences.getTuckThreshold();
+                int lunchThreshold = mPreferences.getLunchThreshold() * 100;
+                int tuckThreshold = mPreferences.getTuckThreshold() * 100;
 
                 if (lunchBalance < lunchThreshold && tuckBalance < tuckThreshold) {
-                    sendNotification("Balances Low", "Your lunch and tuck balances are low.");
+                    sendNotification("Balances Alert", "Your lunch and tuck balances are low");
                 } else if (lunchBalance < lunchThreshold) {
-                    sendNotification("Lunch Balance Low", "Your lunch balance is low");
+                    sendNotification("Balances Alert", "Your lunch balance is low");
                 } else if (tuckBalance < tuckThreshold) {
-                    sendNotification("Tuck Balance Low", "Your tuck balance is low.");
+                    sendNotification("Balances Alert", "Your tuck balance is low");
                 }
             }
 
             @Override
             public void failure(RetrofitError retrofitError) {
+                Log.e("BALANCES", "Failed callback");
                 // Check for authentication error
                 if (retrofitError.getResponse().getStatus() == 401) {
                     mPreferences.setAuthState(false);
-                    sendNotification("Unable to Login", "Your WisePay login details are incorrect. Tap here to fix.");
+                    sendNotification("Balances - Error", "Your WisePay login details are incorrect. Tap here to fix.");
                 } else {
 
                     JsonObject jsonResponse = (JsonObject) retrofitError.getBodyAs(JsonObject.class);

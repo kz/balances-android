@@ -41,11 +41,6 @@ public class SetupWizardStepNotifications extends WizardStep {
 
         // Set default values in preferences
         PreferencesModel preferences = new PreferencesModel(getActivity());
-        preferences.setNotificationState(false);
-        preferences.setLunchThreshold(10);
-        preferences.setTuckThreshold(10);
-        preferences.setNotificationHours(18);
-        preferences.setNotificationMinutes(0);
 
         chkNotificationsEnable.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override

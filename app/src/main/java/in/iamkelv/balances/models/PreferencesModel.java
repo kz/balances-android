@@ -22,10 +22,6 @@ public class PreferencesModel {
         return mSettings.getBoolean("auth_state", true);
     }
 
-    public boolean getIndevState() {
-        return mSettings.getBoolean("indev_state", false);
-    }
-
     public String getUsername() {
         return mSettings.getString("username", "");
     }

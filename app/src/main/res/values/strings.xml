@@ -42,8 +42,8 @@
     <string name="main_last_checked">Last checked:</string>
     <string name="main_open_wisepay_website">Open WisePay Website</string>
     <string name="main_check_balances">Check Balances</string>
-    <string name="main_checking">CHECKING</string>
-    <string name="main_checked">CHECKED</string>
+    <string name="main_checking">Checking</string>
+    <string name="main_checked">Checked</string>
     <string name="title_activity_reauth">Reauthenticate</string>
     <string name="reauth_title">Reauthentication Needed</string>
     <string name="reauth_instructions">This app has been unable to log in using the WisePay login details you previously entered. You must enter your login details again before you can continue using this app.</string>

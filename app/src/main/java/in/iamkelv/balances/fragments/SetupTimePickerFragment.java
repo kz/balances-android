@@ -38,7 +38,7 @@ public class SetupTimePickerFragment extends DialogFragment implements TimePicke
         String minutes = String.format("%02d", minute);
         mParent.mTxtScheduledTimeHours.setText(hours);
         mParent.mTxtScheduledTimeMinutes.setText(minutes);
-        PreferencesModel preferences = new PreferencesModel(getActivity());
+        PreferencesModel preferences = new PreferencesModel(getActivity().getApplicationContext());
         preferences.setNotificationHours(hourOfDay);
         preferences.setNotificationMinutes(minute);
     }
