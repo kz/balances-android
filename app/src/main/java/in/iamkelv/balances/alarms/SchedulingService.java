@@ -37,12 +37,13 @@ public class SchedulingService extends IntentService {
 
     public SchedulingService() {
         super("SchedulingService");
-
-        // mPreferences = new PreferencesModel(getBaseContext());
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
+
+        mPreferences = new PreferencesModel(this);
+
 /*
         if (isNetworkAvailable()) {
             checkBalances();
