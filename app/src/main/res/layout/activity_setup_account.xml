@@ -31,6 +31,7 @@
                 android:textColor="@color/colorTextIcons"
                 android:textSize="28sp"
                 android:textStyle="normal" />
+
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
@@ -40,24 +41,9 @@
         android:layout_height="fill_parent"
         android:layout_below="@+id/toolbar"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/footerRelativeLayout">
+        android:layout_above="@+id/footerRelativeLayout"
+        android:id="@+id/scrollView">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="48dp"
-            android:paddingRight="48dp"
-            android:paddingTop="25dp"
-            android:paddingBottom="25dp">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/textView" />
-        </RelativeLayout>
     </ScrollView>
 
     <RelativeLayout
@@ -81,6 +67,19 @@
             android:contentDescription="@string/accessibility_next_button"
             android:enabled="true"
             android:src="@drawable/ic_chevron_right_24dp" />
+
+        <ImageButton
+            android:id="@+id/prevButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:enabled="true"
+            android:src="@drawable/ic_chevron_left_24dp"
+            android:layout_alignTop="@+id/nextButton"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="48dp"
+            android:contentDescription="@string/accessibility_prev_button" />
     </RelativeLayout>
 
 </RelativeLayout>

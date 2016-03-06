@@ -13,4 +13,5 @@
 
     <!-- Accessibility -->
     <string name="accessibility_next_button">Next Button</string>
+    <string name="accessibility_prev_button">Previous Button</string>
 </resources>
