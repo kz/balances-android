@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "in.iamkelv.balances2"
+        applicationId "in.iamkelv.balances"
         minSdkVersion 17
         targetSdkVersion 23
         versionCode 3
