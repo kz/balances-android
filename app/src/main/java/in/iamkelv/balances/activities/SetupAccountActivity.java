@@ -1,5 +1,6 @@
 package in.iamkelv.balances.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -46,7 +47,7 @@ public class SetupAccountActivity extends AppCompatActivity {
 
     public void onSignInButtonClick() {
         signInButton.setEnabled(false);
-        signInButton.setText(R.string.activity_setup_signed_in);
+        signInButton.setText(R.string.setup_account_signed_in);
 
         usernameEditText.setFocusable(false);
         usernameEditText.setFocusableInTouchMode(false);
@@ -60,7 +61,9 @@ public class SetupAccountActivity extends AppCompatActivity {
     }
 
     public void onNextButtonClick() {
-
+        Intent nextActivityIntent = new Intent(this, SetupNotificationsActivity.class);
+        startActivity(nextActivityIntent);
+        overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
     }
 
     public void onPrevButtonClick() {
