@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory
-        android:title="asdf">
 
-        <CheckBoxPreference
-            android:key="checkbox_preference"
-            android:title="asdf"
-            android:summary="asdf" />
+    <SwitchPreference
+        android:key="@string/preference_notifications_enabled_key"
+        android:summary="@string/preference_notifications_enabled_summary"
+        android:title="@string/preference_notifications_enabled_title" />
 
-    </PreferenceCategory>
+    <in.iamkelv.balances.preferences.TimePickerPreference
+        android:key="notifications_time"
+        android:summary="Your balances will be checked daily at: %s"
+        android:title="Set time"
+        android:dependency="@string/preference_notifications_enabled_key"/>
+
 </PreferenceScreen>

@@ -17,11 +17,13 @@
     <!-- Setup Wizard Notifications Activity-->
     <string name="setup_notifications_introduction">Balances can check when your balances are low on a daily basis and alert you when your balances fall below a specified threshold.</string>
 
+    <!-- Preferences Fragment -->
+    <string name="preference_notifications_enabled_key">notifications_enabled</string>
+    <string name="preference_notifications_enabled_title">Enable Notifications</string>
+    <string name="preference_notifications_enabled_summary">Notifications are %s</string>
+
     <!-- Accessibility -->
     <string name="accessibility_next_button">Next Button</string>
     <string name="accessibility_prev_button">Previous Button</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -49,12 +49,10 @@ public class SetupAccountActivity extends AppCompatActivity {
         signInButton.setEnabled(false);
         signInButton.setText(R.string.setup_account_signed_in);
 
-        usernameEditText.setFocusable(false);
-        usernameEditText.setFocusableInTouchMode(false);
-        usernameEditText.setClickable(false);
-        passwordEditText.setFocusable(false);
-        passwordEditText.setFocusableInTouchMode(false);
-        passwordEditText.setClickable(false);
+        getWindow().getDecorView().clearFocus();
+
+        usernameEditText.setEnabled(false);
+        passwordEditText.setEnabled(false);
 
         nextButton.setAlpha((float) 1);
         nextButton.setEnabled(true);
@@ -71,12 +69,6 @@ public class SetupAccountActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
-    }
-
     @OnClick({R.id.signInButton, R.id.nextButton, R.id.prevButton})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -90,5 +82,11 @@ public class SetupAccountActivity extends AppCompatActivity {
                 onPrevButtonClick();
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
     }
 }
