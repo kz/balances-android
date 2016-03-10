@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "in.iamkelv.balances"
+        applicationId "in.iamkelv.balances2"
         minSdkVersion 17
         targetSdkVersion 23
         versionCode 3
@@ -27,4 +27,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.2.0'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:support-v4:23.2.0'
+    compile 'com.github.jorgecastilloprz:fabprogresscircle:1.01@aar'
 }

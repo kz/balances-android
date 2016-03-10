@@ -1,5 +1,6 @@
 package in.iamkelv.balances.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -28,9 +29,9 @@ public class SetupNotificationsActivity extends AppCompatActivity {
 
 
     public void onNextButtonClick() {
-/*      Intent nextActivityIntent = new Intent(this, SetupNotificationsActivity.class);
+      Intent nextActivityIntent = new Intent(this, MainActivity.class);
         startActivity(nextActivityIntent);
-        overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);*/
+        overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
     }
 
     public void onPrevButtonClick() {
