@@ -2,14 +2,31 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SwitchPreference
+        android:defaultValue="true"
         android:key="@string/preference_notifications_enabled_key"
         android:summary="@string/preference_notifications_enabled_summary"
         android:title="@string/preference_notifications_enabled_title" />
 
     <in.iamkelv.balances.preferences.TimePickerPreference
+        android:defaultValue="18:00"
+        android:dependency="@string/preference_notifications_enabled_key"
         android:key="notifications_time"
         android:summary="Your balances will be checked daily at: %s"
-        android:title="Set time"
-        android:dependency="@string/preference_notifications_enabled_key"/>
+        android:title="Set time" />
+
+    <in.iamkelv.balances.preferences.ThresholdPickerPreference
+        android:defaultValue="10"
+        android:dependency="@string/preference_notifications_enabled_key"
+        android:key="notifications_lunch"
+        android:summary="You will be notified if your lunch balance falls below: £%s.00"
+        android:title="Set lunch threshold" />
+
+    <in.iamkelv.balances.preferences.ThresholdPickerPreference
+        android:defaultValue="10"
+        android:dependency="@string/preference_notifications_enabled_key"
+        android:key="notifications_tuck"
+        android:summary="You will be notified if your lunch balance falls below: £%s.00"
+        android:title="Set tuck threshold" />
+
 
 </PreferenceScreen>
