@@ -18,9 +18,27 @@
     <string name="setup_notifications_introduction">Balances can check when your balances are low on a daily basis and alert you when your balances fall below a specified threshold.</string>
 
     <!-- Preferences Fragment -->
-    <string name="preference_notifications_enabled_key">notifications_enabled</string>
-    <string name="preference_notifications_enabled_title">Enable Notifications</string>
-    <string name="preference_notifications_enabled_summary">Notifications are %s</string>
+    <string name="preferences_notifications_enabled_key">notifications_enabled</string>
+    <string name="preferences_notifications_enabled_title">Enable Notifications</string>
+    <string name="preferences_notifications_enabled_summary">Notifications are %s</string>
+    <string name="preferences_notifications_enabled_default">true</string>
+    <string name="preferences_notifications_enabled_true">enabled</string>
+    <string name="preferences_notifications_enabled_false">disabled</string>
+
+    <string name="preferences_notifications_tuck_key">notifications_tuck</string>
+    <string name="preferences_notifications_tuck_summary">You will be notified if your lunch balance falls below: £%s</string>
+    <string name="preferences_notifications_tuck_title">Set tuck threshold</string>
+    <string name="preferences_notifications_tuck_default">10</string>
+
+    <string name="preferences_notifications_lunch_key">notifications_lunch</string>
+    <string name="preferences_notifications_lunch_summary">You will be notified if your lunch balance falls below: £%s</string>
+    <string name="preferences_notifications_lunch_title">Set lunch threshold</string>
+    <string name="preferences_notifications_lunch_default">10</string>
+
+    <string name="preferences_notifications_time_key">notifications_time</string>
+    <string name="preferences_notifications_time_title">Set time</string>
+    <string name="preferences_notifications_time_summary">Your balances will be checked daily at: %s</string>
+    <string name="preferences_notifications_time_default">18:00</string>
 
     <!-- Accessibility -->
     <string name="accessibility_next_button">Next Button</string>
