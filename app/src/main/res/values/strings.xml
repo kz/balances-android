@@ -27,16 +27,16 @@
 
     <string name="preferences_notifications_tuck_key">notifications_tuck</string>
     <string name="preferences_notifications_tuck_summary">You will be notified if your lunch balance falls below: £%s</string>
-    <string name="preferences_notifications_tuck_title">Set tuck threshold</string>
+    <string name="preferences_notifications_tuck_title">Set Tuck Threshold</string>
     <string name="preferences_notifications_tuck_default">10</string>
 
     <string name="preferences_notifications_lunch_key">notifications_lunch</string>
     <string name="preferences_notifications_lunch_summary">You will be notified if your lunch balance falls below: £%s</string>
-    <string name="preferences_notifications_lunch_title">Set lunch threshold</string>
+    <string name="preferences_notifications_lunch_title">Set Lunch Threshold</string>
     <string name="preferences_notifications_lunch_default">10</string>
 
     <string name="preferences_notifications_time_key">notifications_time</string>
-    <string name="preferences_notifications_time_title">Set time</string>
+    <string name="preferences_notifications_time_title">Set Time</string>
     <string name="preferences_notifications_time_summary">Your balances will be checked daily at: %s</string>
     <string name="preferences_notifications_time_default">18:00</string>
 

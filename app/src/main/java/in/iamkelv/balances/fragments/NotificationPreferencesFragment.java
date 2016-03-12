@@ -51,6 +51,8 @@ public class NotificationPreferencesFragment extends PreferenceFragment {
         // Update preferences with stored data
         updateSummaries();
 
+        mEnabledPreference.setOnPreferenceChangeListener(mEnabledPreferenceListener);
+
         return inflater.inflate(R.layout.fragment_notification_preferences, container, false);
     }
 
@@ -75,4 +77,18 @@ public class NotificationPreferencesFragment extends PreferenceFragment {
         String tuckPreferenceValue = mSettings.getString(mTuckPreference.getKey(), getString(R.string.preferences_notifications_tuck_default));
         mTuckPreference.setSummary(String.format(tuckPreferenceSummary, tuckPreferenceValue));
     }
+
+    // Preference change listeners
+    Preference.OnPreferenceChangeListener mEnabledPreferenceListener = new Preference.OnPreferenceChangeListener() {
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            String enabledPreferenceSummary = getString(R.string.preferences_notifications_enabled_summary);
+            String enabledPreferenceFormatValue = (newValue.equals(true)) ?
+                    getString(R.string.preferences_notifications_enabled_true) :
+                    getString(R.string.preferences_notifications_enabled_false);
+            mEnabledPreference.setSummary(String.format(enabledPreferenceSummary, enabledPreferenceFormatValue));
+            return true;
+        }
+    };
+
 }
