@@ -1,14 +1,12 @@
 package in.iamkelv.balances.preferences;
 
-import android.app.TimePickerDialog;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.TypedArray;
 import android.os.Build;
 import android.preference.DialogPreference;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.TimePicker;
 
@@ -27,6 +25,12 @@ public class TimePickerPreference extends DialogPreference {
 
         mSettings = PreferenceManager.getDefaultSharedPreferences(context);
         mTimePreferenceValue = mSettings.getString(getKey(), "18:00");
+    }
+
+    @Override
+    protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
+        super.onPrepareDialogBuilder(builder);
+        builder.setTitle(null);
     }
 
     @Override
@@ -63,12 +67,16 @@ public class TimePickerPreference extends DialogPreference {
         super.onDialogClosed(positiveResult);
 
         if (positiveResult) {
+            String newValue;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                persistString(Helpers.createTimeString(mTimePicker.getHour(), mTimePicker.getMinute()));
+                newValue = Helpers.createTimeString(mTimePicker.getHour(), mTimePicker.getMinute());
+                persistString(newValue);
             } else {
-                persistString(Helpers.createTimeString(mTimePicker.getCurrentHour(), mTimePicker.getCurrentMinute()));
+                newValue = Helpers.createTimeString(mTimePicker.getCurrentHour(), mTimePicker.getCurrentMinute());
+                persistString(newValue);
             }
             notifyChanged();
+            callChangeListener(newValue);
         }
     }
 }

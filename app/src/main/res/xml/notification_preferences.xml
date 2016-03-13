@@ -11,6 +11,7 @@
         android:defaultValue="@string/preferences_notifications_time_default"
         android:dependency="@string/preferences_notifications_enabled_key"
         android:key="@string/preferences_notifications_time_key"
+        android:persistent="true"
         android:summary="@string/preferences_notifications_time_summary"
         android:title="@string/preferences_notifications_time_title" />
 
@@ -18,6 +19,7 @@
         android:defaultValue="@string/preferences_notifications_lunch_default"
         android:dependency="@string/preferences_notifications_enabled_key"
         android:key="@string/preferences_notifications_lunch_key"
+        android:persistent="true"
         android:summary="@string/preferences_notifications_lunch_summary"
         android:title="@string/preferences_notifications_lunch_title" />
 
@@ -25,6 +27,7 @@
         android:defaultValue="@string/preferences_notifications_tuck_default"
         android:dependency="@string/preferences_notifications_enabled_key"
         android:key="@string/preferences_notifications_tuck_key"
+        android:persistent="true"
         android:summary="@string/preferences_notifications_tuck_summary"
         android:title="@string/preferences_notifications_tuck_title" />
 

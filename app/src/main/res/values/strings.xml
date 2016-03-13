@@ -3,6 +3,7 @@
     <string name="app_name">Balances for Whitgift School</string>
     <string name="app_title">Balances</string>
     <string name="app_subtitle">for Whitgift School</string>
+    <string name="pound_sign">\u00A3</string>
 
     <!-- Setup Wizard Introduction Activity -->
     <string name="setup_introduction_text">Balances for Whitgift School is an app which allows you to check your lunch and tuck balances, view your recent purchase history and notifies you when your balances are low.\n\nThis app is developed by a student of Whitgift School. This app is not affiliated with Whitgift School or WisePay.\n\nTo proceed, you will need your WisePay username and password in hand. If you are a student, ask a parent/guardian or the School Office for the login details.</string>
@@ -26,12 +27,14 @@
     <string name="preferences_notifications_enabled_false">disabled</string>
 
     <string name="preferences_notifications_tuck_key">notifications_tuck</string>
-    <string name="preferences_notifications_tuck_summary">You will be notified if your lunch balance falls below: £%s</string>
+    <string name="preferences_notifications_tuck_summary">You will be notified if your tuck balance falls below: \u00A3%s</string>
+    <string name="preferences_notifications_tuck_summary_disabled">You will not be notified about your tuck balance</string>
     <string name="preferences_notifications_tuck_title">Set Tuck Threshold</string>
     <string name="preferences_notifications_tuck_default">10</string>
 
     <string name="preferences_notifications_lunch_key">notifications_lunch</string>
-    <string name="preferences_notifications_lunch_summary">You will be notified if your lunch balance falls below: £%s</string>
+    <string name="preferences_notifications_lunch_summary">You will be notified if your lunch balance falls below: \u00A3%s</string>
+    <string name="preferences_notifications_lunch_summary_disabled">You will not be notified about your lunch balance</string>
     <string name="preferences_notifications_lunch_title">Set Lunch Threshold</string>
     <string name="preferences_notifications_lunch_default">10</string>
 
@@ -39,6 +42,10 @@
     <string name="preferences_notifications_time_title">Set Time</string>
     <string name="preferences_notifications_time_summary">Your balances will be checked daily at: %s</string>
     <string name="preferences_notifications_time_default">18:00</string>
+
+    <!-- Pickers -->
+    <string name="threshold_picker_threshold_amount">Threshold: \u00A3%1$s</string>
+    <string name="threshold_picker_threshold_disabled">Threshold: Disabled</string>
 
     <!-- Accessibility -->
     <string name="accessibility_next_button">Next Button</string>
