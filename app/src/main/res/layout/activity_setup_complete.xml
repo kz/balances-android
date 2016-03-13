@@ -26,7 +26,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginBottom="28sp"
                 android:fontFamily="sans-serif"
-                android:text="@string/setup_notifications_title"
+                android:text="@string/setup_complete_title"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/colorTextIcons"
                 android:textSize="28sp"
@@ -35,12 +35,37 @@
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
-    <RelativeLayout
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/relativeLayout"
         android:layout_above="@+id/footerRelativeLayout"
-        android:layout_below="@+id/toolbar"/>
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingBottom="25dp"
+            android:paddingLeft="48dp"
+            android:paddingRight="48dp"
+            android:paddingTop="25dp">
+
+            <TextView
+                android:id="@+id/instructionsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setup_complete_information"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorTextPrimary" />
+
+
+        </LinearLayout>
+    </ScrollView>
 
     <RelativeLayout
         android:id="@+id/footerRelativeLayout"
@@ -50,32 +75,34 @@
         android:layout_alignParentStart="false"
         android:background="@color/colorFooterBackground">
 
-        <ImageButton
+        <Button
             android:id="@+id/nextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="47dp"
+            android:layout_marginEnd="48dp"
             android:layout_marginRight="48dp"
             android:background="?selectableItemBackgroundBorderless"
             android:clickable="true"
             android:contentDescription="@string/accessibility_next_button"
             android:enabled="true"
-            android:src="@drawable/ic_chevron_right_24dp" />
+            android:text="Finish"
+            android:minWidth="0dp" />
 
         <ImageButton
             android:id="@+id/prevButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/nextButton"
             android:layout_marginLeft="48dp"
             android:background="?selectableItemBackgroundBorderless"
             android:clickable="true"
             android:contentDescription="@string/accessibility_prev_button"
             android:enabled="true"
-            android:src="@drawable/ic_chevron_left_24dp" />
+            android:src="@drawable/ic_chevron_left_24dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="47dp" />
     </RelativeLayout>
 
 </RelativeLayout>

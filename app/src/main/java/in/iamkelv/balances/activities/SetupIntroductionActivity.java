@@ -13,8 +13,6 @@ import in.iamkelv.balances.R;
 
 public class SetupIntroductionActivity extends AppCompatActivity {
 
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
     @Bind(R.id.nextButton)
     ImageButton nextButton;
 
@@ -23,11 +21,6 @@ public class SetupIntroductionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_introduction);
         ButterKnife.bind(this);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
-
     }
 
     @Override

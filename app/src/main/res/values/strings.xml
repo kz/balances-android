@@ -16,7 +16,12 @@
     <string name="setup_account_signed_in">Signed In</string>
 
     <!-- Setup Wizard Notifications Activity-->
+    <string name="setup_notifications_title">Notifications</string>
     <string name="setup_notifications_introduction">Balances can check when your balances are low on a daily basis and alert you when your balances fall below a specified threshold.</string>
+
+    <!-- Setup Wizard Complete Activity -->
+    <string name="setup_complete_title">Setup complete</string>
+    <string name="setup_complete_information">The setup has been complete. You can now view your balances and purchase history.\n\nNote: Balances are not updated in realtime and are instead sent from the tills to WisePay on a daily basis (usually after school).</string>
 
     <!-- Preferences Fragment -->
     <string name="preferences_notifications_enabled_key">notifications_enabled</string>
