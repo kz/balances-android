@@ -1,6 +1,8 @@
 package in.iamkelv.balances.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +26,8 @@ public class SetupCompleteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_complete);
         ButterKnife.bind(this);
+
+        updatePreferencesWithSetupComplete();
     }
 
     @Override
@@ -54,6 +58,13 @@ public class SetupCompleteActivity extends AppCompatActivity {
                 onPrevButtonClick();
                 break;
         }
+    }
+
+    private void updatePreferencesWithSetupComplete() {
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(getString(R.string.preferences_is_setup_complete_key), true);
+        editor.apply();
     }
 
 }

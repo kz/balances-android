@@ -24,6 +24,8 @@
     <string name="setup_complete_information">The setup has been complete. You can now view your balances and purchase history.\n\nNote: Balances are not updated in realtime and are instead sent from the tills to WisePay on a daily basis (usually after school).</string>
 
     <!-- Preferences Fragment -->
+    <string name="preferences_is_setup_complete_key">isSetupComplete</string>
+
     <string name="preferences_notifications_enabled_key">notifications_enabled</string>
     <string name="preferences_notifications_enabled_title">Enable Notifications</string>
     <string name="preferences_notifications_enabled_summary">Notifications are %s</string>

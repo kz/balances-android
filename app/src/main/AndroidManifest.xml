@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="in.iamkelv.balances">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +14,7 @@
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
         <activity
-            android:name=".activities.SetupWelcomeActivity"
+            android:name=".activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.SetupWelcomeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.SetupIntroductionActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -28,9 +34,6 @@
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".activities.SetupNotificationsActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.SetupCompleteActivity"
