@@ -3,7 +3,7 @@
     <string name="app_name">Balances for Whitgift School</string>
     <string name="app_title">Balances</string>
     <string name="app_subtitle">for Whitgift School</string>
-    <string name="app_base_url">http://192.168.10.10/</string>
+    <string name="app_base_url">https://balances.iamkelv.in/</string>
     <string name="pound_sign">\u00A3</string>
 
     <!-- Main Activity -->

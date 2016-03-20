@@ -37,6 +37,8 @@ import butterknife.OnClick;
 import in.iamkelv.balances.R;
 import in.iamkelv.balances.adapters.PurchasesAdapter;
 import in.iamkelv.balances.adapters.SectionedPurchasesRecyclerViewAdapter;
+import in.iamkelv.balances.alarms.AlarmReceiver;
+import in.iamkelv.balances.alarms.CheckService;
 import in.iamkelv.balances.api.AccountResponse;
 import in.iamkelv.balances.api.ApiEndpointInterface;
 import in.iamkelv.balances.api.Purchase;
@@ -88,8 +90,19 @@ public class MainActivity extends AppCompatActivity {
         mProgressDialog.setMessage("Please wait...");
         mProgressDialog.setCancelable(false);
 
+        updateAlarmIfNotificationsEnabled();
         updateBalancesFromPreferences();
         createRecyclerViewFromDatabase();
+    }
+
+    private void updateAlarmIfNotificationsEnabled() {
+        boolean notificationState = mSettings.getBoolean(getString(R.string.preferences_notifications_enabled_key),
+                Boolean.parseBoolean(getString(R.string.preferences_notifications_enabled_default)));
+        AlarmReceiver alarm = new AlarmReceiver();
+        alarm.cancelAlarm(this);
+        if (notificationState) {
+            alarm.setAlarm(this);
+        }
     }
 
     private void ensureAuthenticatedAndSetupComplete() {
