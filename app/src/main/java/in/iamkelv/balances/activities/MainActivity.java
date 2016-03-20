@@ -74,8 +74,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // TODO: Remove Stetho
-        Stetho.initializeWithDefaults(this);
         JodaTimeAndroid.init(this);
 
         mSettings = PreferenceManager.getDefaultSharedPreferences(this);
@@ -192,15 +190,9 @@ public class MainActivity extends AppCompatActivity {
         String username = mSettings.getString(getString(R.string.preferences_username_key), null);
         String password = mSettings.getString(getString(R.string.preferences_password_key), null);
 
-        // TODO: Remove Stetho
-        OkHttpClient client = new OkHttpClient.Builder()
-                .addNetworkInterceptor(new StethoInterceptor())
-                .build();
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
                 .build();
 
         ApiEndpointInterface apiService = retrofit.create(ApiEndpointInterface.class);
