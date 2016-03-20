@@ -44,19 +44,27 @@ public class NotificationPreferencesFragment extends PreferenceFragment {
         mLunchPreference = (ThresholdPickerPreference) findPreference(getString(R.string.preferences_notifications_lunch_key));
         mTuckPreference = (ThresholdPickerPreference) findPreference(getString(R.string.preferences_notifications_tuck_key));
 
-        // Update preferences with stored data
+        // Update preferences with stored data, setting default values
+        SharedPreferences.Editor editor = mSettings.edit();
+
         Boolean enabledPreferenceValue = mSettings.getBoolean(mEnabledPreference.getKey(),
                 Boolean.parseBoolean(getString(R.string.preferences_notifications_enabled_default)));
+        editor.putBoolean(mEnabledPreference.getKey(), enabledPreferenceValue);
         updateEnabledSummary(enabledPreferenceValue);
 
         String timePreferenceValue = mSettings.getString(mTimePreference.getKey(), getString(R.string.preferences_notifications_time_default));
+        editor.putString(mTimePreference.getKey(), timePreferenceValue);
         updateTimeSummary(timePreferenceValue);
         
         String lunchPreferenceValue = mSettings.getString(mLunchPreference.getKey(), getString(R.string.preferences_notifications_lunch_default));
+        editor.putString(mLunchPreference.getKey(), lunchPreferenceValue);
         updateLunchSummary(lunchPreferenceValue);
         
         String tuckPreferenceValue = mSettings.getString(mTuckPreference.getKey(), getString(R.string.preferences_notifications_tuck_default));
+        editor.putString(mTuckPreference.getKey(), tuckPreferenceValue);
         updateTuckSummary(tuckPreferenceValue);
+
+        editor.apply();
 
         // Bind listeners      
         mEnabledPreference.setOnPreferenceChangeListener(mEnabledPreferenceListener);

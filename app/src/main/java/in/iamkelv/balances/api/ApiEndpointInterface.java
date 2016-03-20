@@ -1,9 +1,5 @@
-package in.iamkelv.balances.services;
+package in.iamkelv.balances.api;
 
-import in.iamkelv.balances.models.AccountResponse;
-import in.iamkelv.balances.models.AuthResponse;
-import in.iamkelv.balances.models.Balances;
-import in.iamkelv.balances.models.BalancesResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

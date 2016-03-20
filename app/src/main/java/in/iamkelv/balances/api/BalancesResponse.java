@@ -1,5 +1,5 @@
 
-package in.iamkelv.balances.models;
+package in.iamkelv.balances.api;
 
 import java.util.HashMap;
 import java.util.Map;

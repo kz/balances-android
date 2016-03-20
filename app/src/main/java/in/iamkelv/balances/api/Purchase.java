@@ -1,5 +1,8 @@
-package in.iamkelv.balances.models;
+package in.iamkelv.balances.api;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +19,15 @@ public class Purchase {
      */
     public String getDate() {
         return date;
+    }
+
+    /**
+     * @return Date
+     */
+    public long getDateAsTimestamp() throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Date formattedDate = format.parse(date);
+        return formattedDate.getTime();
     }
 
     /**
