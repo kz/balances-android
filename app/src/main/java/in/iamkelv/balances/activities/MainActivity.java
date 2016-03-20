@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences mSettings;
     ProgressDialog mProgressDialog;
+    PurchasesAdapter mPurchasesAdapter;
+    SectionedPurchasesRecyclerViewAdapter mSectionedAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         mProgressDialog.setCancelable(false);
 
         updateBalancesFromPreferences();
-        updateRecyclerViewFromDatabase();
+        createRecyclerViewFromDatabase();
     }
 
     private void ensureAuthenticatedAndSetupComplete() {
@@ -112,7 +114,52 @@ public class MainActivity extends AppCompatActivity {
 
     private void onRefreshFabClick() {
         mProgressDialog.show();
+
         updateData();
+    }
+
+    private void updateBalancesFromPreferences() {
+        String lunch = mSettings.getString(getString(R.string.preferences_lunch_key), getString(R.string.main_default_value));
+        String tuck = mSettings.getString(getString(R.string.preferences_tuck_key), getString(R.string.main_default_value));
+        String lastChecked = mSettings.getString(getString(R.string.preferences_last_checked_key), getString(R.string.main_default_value));
+
+        if (!(lunch.equals(getString(R.string.main_default_value)) || tuck.equals(getString(R.string.main_default_value)))) {
+            lunchAmountTextView.setText(String.format(getString(R.string.main_price_value), lunch));
+            tuckAmountTextView.setText(String.format(getString(R.string.main_price_value), tuck));
+            lastCheckedValueTextView.setText(lastChecked);
+        }
+    }
+
+    private void createRecyclerViewFromDatabase() {
+
+        TreeMap<Long, List<DbPurchase>> sectionedDbPurchases = getSectionedDbPurchaseFromDatabase();
+        List<DbPurchase> purchases = new ArrayList<>();
+        List<SectionedPurchasesRecyclerViewAdapter.Section> sections = new ArrayList<>();
+
+        int lenCount = 0;
+        for (Map.Entry<Long, List<DbPurchase>> dbPurchaseSection : sectionedDbPurchases.entrySet()) {
+            String sectionTitle = convertDateTimestampToString(dbPurchaseSection.getKey());
+            sections.add(new SectionedPurchasesRecyclerViewAdapter.Section(lenCount, sectionTitle));
+
+            for (DbPurchase dbPurchase : dbPurchaseSection.getValue()) {
+                purchases.add(dbPurchase);
+            }
+
+            lenCount += dbPurchaseSection.getValue().size();
+        }
+
+        mPurchasesAdapter = new PurchasesAdapter(this, purchases);
+
+        SectionedPurchasesRecyclerViewAdapter.Section[] dummy = new SectionedPurchasesRecyclerViewAdapter.Section[sections.size()];
+        mSectionedAdapter = new
+                SectionedPurchasesRecyclerViewAdapter(this, R.layout.section, R.id.section_text, mPurchasesAdapter);
+        mSectionedAdapter.setSections(sections.toArray(dummy));
+
+        RecyclerView.ItemDecoration itemDecoration = new
+                DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST);
+        purchasesRecyclerView.addItemDecoration(itemDecoration);
+        purchasesRecyclerView.setAdapter(mSectionedAdapter);
+        purchasesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void updateRecyclerViewFromDatabase() {
@@ -132,30 +179,12 @@ public class MainActivity extends AppCompatActivity {
             lenCount += dbPurchaseSection.getValue().size();
         }
 
-        PurchasesAdapter purchasesAdapter = new PurchasesAdapter(this, purchases);
+        mPurchasesAdapter.swap(purchases);
 
         SectionedPurchasesRecyclerViewAdapter.Section[] dummy = new SectionedPurchasesRecyclerViewAdapter.Section[sections.size()];
-        SectionedPurchasesRecyclerViewAdapter sectionedAdapter = new
-                SectionedPurchasesRecyclerViewAdapter(this, R.layout.section, R.id.section_text, purchasesAdapter);
-        sectionedAdapter.setSections(sections.toArray(dummy));
-
-        RecyclerView.ItemDecoration itemDecoration = new
-                DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST);
-        purchasesRecyclerView.addItemDecoration(itemDecoration);
-        purchasesRecyclerView.setAdapter(sectionedAdapter);
-        purchasesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
-
-    private void updateBalancesFromPreferences() {
-        String lunch = mSettings.getString(getString(R.string.preferences_lunch_key), getString(R.string.main_default_value));
-        String tuck = mSettings.getString(getString(R.string.preferences_tuck_key), getString(R.string.main_default_value));
-        String lastChecked = mSettings.getString(getString(R.string.preferences_last_checked_key), getString(R.string.main_default_value));
-
-        if (!(lunch.equals(getString(R.string.main_default_value)) || tuck.equals(getString(R.string.main_default_value)))) {
-            lunchAmountTextView.setText(String.format(getString(R.string.main_price_value), lunch));
-            tuckAmountTextView.setText(String.format(getString(R.string.main_price_value), tuck));
-            lastCheckedValueTextView.setText(lastChecked);
-        }
+        mSectionedAdapter = new
+                SectionedPurchasesRecyclerViewAdapter(this, R.layout.section, R.id.section_text, mPurchasesAdapter);
+        mSectionedAdapter.setSections(sections.toArray(dummy));
     }
 
     private void updateData() {
@@ -229,7 +258,6 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        updateRecyclerViewFromDatabase();
     }
 
     private void updatePreferencesOnSuccessfulUpdate(AccountResponse data) {
@@ -251,6 +279,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateViewOnSuccessfulUpdate(AccountResponse data) {
         updateBalancesFromPreferences();
+        updateRecyclerViewFromDatabase();
     }
 
     private TreeMap<Long, List<DbPurchase>> getSectionedDbPurchaseFromDatabase() {

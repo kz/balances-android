@@ -23,7 +23,6 @@ public class SectionedPurchasesRecyclerViewAdapter extends RecyclerView.Adapter<
     private RecyclerView.Adapter mBaseAdapter;
     private SparseArray<Section> mSections = new SparseArray<Section>();
 
-
     public SectionedPurchasesRecyclerViewAdapter(Context context, int sectionResourceId, int textResourceId,
                                               RecyclerView.Adapter baseAdapter) {
 

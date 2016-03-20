@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import in.iamkelv.balances.R;
@@ -36,15 +37,11 @@ public class PurchasesAdapter extends RecyclerView.Adapter<PurchasesAdapter.View
         mDbPurchases = dbPurchases;
     }
 
-    public void clearData() {
-        int size = this.mDbPurchases.size();
-        if (size > 0) {
-            for (int i = 0; i < size; i++) {
-                this.mDbPurchases.remove(0);
-            }
 
-            this.notifyItemRangeRemoved(0, size);
-        }
+    public void swap(List<DbPurchase> dbPurchases){
+        mDbPurchases.clear();
+        mDbPurchases.addAll(dbPurchases);
+        notifyDataSetChanged();
     }
 
     public void add(DbPurchase item, int position) {
