@@ -88,7 +88,7 @@ public class SetupAccountActivity extends AppCompatActivity {
     }
 
     private void attemptAuthentication(String username, String password) {
-        String baseUrl = "http://192.168.10.10/";
+        String baseUrl = getString(R.string.app_base_url);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -132,8 +132,8 @@ public class SetupAccountActivity extends AppCompatActivity {
     private void updatePreferencesOnSuccessfulLogin() {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString("username", usernameEditText.getText().toString());
-        editor.putString("password", passwordEditText.getText().toString());
+        editor.putString(getString(R.string.preferences_username_key), usernameEditText.getText().toString());
+        editor.putString(getString(R.string.preferences_password_key), passwordEditText.getText().toString());
         editor.apply();
     }
 

@@ -28,28 +28,28 @@ public class AccountResponse {
     }
 
     /**
-     * @return The balances
+     * @return Balances
      */
     public Balances getBalances() {
         return balances;
     }
 
     /**
-     * @param balances The balances
+     * @param balances Balances
      */
     public void setBalances(Balances balances) {
         this.balances = balances;
     }
 
     /**
-     * @return The purchases
+     * @return Purchases
      */
     public List<Purchase> getPurchases() {
         return purchases;
     }
 
     /**
-     * @param purchases The purchases
+     * @param purchases Purchases
      */
     public void setPurchases(List<Purchase> purchases) {
         this.purchases = purchases;

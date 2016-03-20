@@ -3,7 +3,13 @@
     <string name="app_name">Balances for Whitgift School</string>
     <string name="app_title">Balances</string>
     <string name="app_subtitle">for Whitgift School</string>
+    <string name="app_base_url">http://192.168.10.10/</string>
     <string name="pound_sign">\u00A3</string>
+
+    <!-- Main Activity -->
+    <string name="main_default_value">---</string>
+    <string name="main_price_value">\u00A3%s</string>
+    <string name="main_last_updated">Last Updated:\u0020</string>
 
     <!-- Setup Wizard Introduction Activity -->
     <string name="setup_introduction_text">Balances for Whitgift School is an app which allows you to check your lunch and tuck balances, view your recent purchase history and notifies you when your balances are low.\n\nThis app is developed by a student of Whitgift School. This app is not affiliated with Whitgift School or WisePay.\n\nTo proceed, you will need your WisePay username and password in hand. If you are a student, ask a parent/guardian or the School Office for the login details.</string>
@@ -21,10 +27,15 @@
 
     <!-- Setup Wizard Complete Activity -->
     <string name="setup_complete_title">Setup complete</string>
-    <string name="setup_complete_information">The setup has been complete. You can now view your balances and purchase history.\n\nNote: Balances are not updated in realtime and are instead sent from the tills to WisePay on a daily basis (usually after school).</string>
+    <string name="setup_complete_information">The setup is now complete. You can now view your balances and purchase history.\n\nNote: Balances are not updated in realtime and are instead sent from the tills to WisePay on a daily basis (usually after school).</string>
 
     <!-- Preferences Fragment -->
-    <string name="preferences_is_setup_complete_key">isSetupComplete</string>
+    <string name="preferences_is_setup_complete_key">is_setup_complete</string>
+    <string name="preferences_reauthentication_key">is_reauthentication_needed</string>
+    <string name="preferences_lunch_key">lunch_amount</string>
+    <string name="preferences_tuck_key">tuck_amount</string>
+    <string name="preferences_username_key">username</string>
+    <string name="preferences_password_key">password</string>
 
     <string name="preferences_notifications_enabled_key">notifications_enabled</string>
     <string name="preferences_notifications_enabled_title">Enable Notifications</string>

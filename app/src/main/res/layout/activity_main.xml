@@ -1,5 +1,6 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -49,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/lunchTextView"
-                    android:text="---"
+                    android:text="@string/main_default_value"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/colorTextIcons" />
 
@@ -59,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/tuckTextView"
                     android:layout_below="@+id/tuckTextView"
-                    android:text="---"
+                    android:text="@string/main_default_value"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/colorTextIcons" />
 
@@ -67,10 +68,19 @@
                     android:id="@+id/lastUpdatedTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/lunchAmountTextView"
-                    android:text="Last Updated: ---"
+                    android:text="@string/main_last_updated"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorTextIcons" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tuckAmountTextView"
+                    android:layout_toEndOf="@+id/lastUpdatedTextView"
+                    android:text="@string/main_default_value"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/colorTextIcons" />
             </RelativeLayout>
@@ -84,25 +94,14 @@
 
     </LinearLayout>
 
-    <com.github.jorgecastilloprz.FABProgressCircle
-        android:id="@+id/fabProgressCircle"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/refreshFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_autorenew_24dp"
+        android:tint="@color/colorTextIcons"
         app:layout_anchor="@id/toolbar"
-        app:layout_anchorGravity="bottom|right|end"
-        app:arcWidth="3dp"
-        app:roundedStroke="true"
-        app:reusable="true">
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/refreshFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:clickable="true"
-            android:src="@drawable/ic_autorenew_24dp"
-            android:tint="@color/colorTextIcons"
-            app:borderWidth="0dp" />
-    </com.github.jorgecastilloprz.FABProgressCircle>
+        app:layout_anchorGravity="bottom|right|end" />
 </android.support.design.widget.CoordinatorLayout>
