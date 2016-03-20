@@ -28,7 +28,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    android:text="Lunch"
+                    android:text="@string/main_lunch_label"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/colorTextIcons"
                     android:textSize="28sp" />
@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/lunchTextView"
                     android:layout_centerHorizontal="true"
-                    android:text="Tuck"
+                    android:text="@string/main_tuck_label"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/colorTextIcons"
                     android:textSize="28sp" />
@@ -65,21 +65,21 @@
                     android:textColor="@color/colorTextIcons" />
 
                 <TextView
-                    android:id="@+id/lastUpdatedTextView"
+                    android:id="@+id/lastCheckedTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/lunchAmountTextView"
-                    android:text="@string/main_last_updated"
+                    android:text="@string/main_last_checked_label"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/colorTextIcons" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/lastCheckedValueTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tuckAmountTextView"
-                    android:layout_toEndOf="@+id/lastUpdatedTextView"
+                    android:layout_toEndOf="@+id/lastCheckedTextView"
                     android:text="@string/main_default_value"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/colorTextIcons" />

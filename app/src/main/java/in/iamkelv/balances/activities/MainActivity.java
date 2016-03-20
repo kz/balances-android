@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -33,8 +35,10 @@ public class MainActivity extends AppCompatActivity {
     TextView lunchAmountTextView;
     @Bind(R.id.tuckAmountTextView)
     TextView tuckAmountTextView;
-    @Bind(R.id.lastUpdatedTextView)
-    TextView lastUpdatedTextView;
+    @Bind(R.id.lastCheckedTextView)
+    TextView lastCheckedTextView;
+    @Bind(R.id.lastCheckedValueTextView)
+    TextView lastCheckedValueTextView;
     @Bind(R.id.refreshFab)
     FloatingActionButton refreshFab;
 
@@ -139,10 +143,17 @@ public class MainActivity extends AppCompatActivity {
     private void updatePreferencesOnSuccessfulUpdate(AccountResponse data) {
         SharedPreferences.Editor editor = mSettings.edit();
 
+        // Update balances
         Double lunch = ((double) data.getBalances().getLunch()) / 100;
         Double tuck = ((double) data.getBalances().getTuck()) / 100;
         editor.putString(getString(R.string.preferences_lunch_key), String.format("%.2f", lunch));
         editor.putString(getString(R.string.preferences_tuck_key), String.format("%.2f", tuck));
+
+        // Update last checked
+        long lastChecked = System.currentTimeMillis();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String strLastChecked = simpleDateFormat.format(lastChecked);
+        editor.putString(getString(R.string.preferences_last_checked_key), strLastChecked);
         editor.commit();
     }
 
@@ -153,11 +164,12 @@ public class MainActivity extends AppCompatActivity {
     private void updateBalancesFromPreferences() {
         String lunch = mSettings.getString(getString(R.string.preferences_lunch_key), getString(R.string.main_default_value));
         String tuck = mSettings.getString(getString(R.string.preferences_tuck_key), getString(R.string.main_default_value));
+        String lastChecked = mSettings.getString(getString(R.string.preferences_last_checked_key), getString(R.string.main_default_value));
 
-        if (!(lunch.equals(getString(R.string.main_default_value))
-                || tuck.equals(getString(R.string.main_default_value)))) {
+        if (!(lunch.equals(getString(R.string.main_default_value)) || tuck.equals(getString(R.string.main_default_value)))) {
             lunchAmountTextView.setText(String.format(getString(R.string.main_price_value), lunch));
             tuckAmountTextView.setText(String.format(getString(R.string.main_price_value), tuck));
+            lastCheckedValueTextView.setText(lastChecked);
         }
     }
 
